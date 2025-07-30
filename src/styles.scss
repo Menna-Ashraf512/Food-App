@@ -1,1 +1,170 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+// global styles
+body {
+  font-family: "inter", sans-serif;
+}
+
+.primary_color {
+  color: #1F263E;
+}
+
+.second_color {
+  color: #4AA35A;
+}
+
+//       Swal.fire({
+//         html: `
+//   <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+//     <img src="assets/images/vector-puppis.png" width="200" alt="Delete Image" />
+//     <h2 style="margin: 0;">Delete This Item?</h2>
+//     <p>Are you sure you want to delete this item?<br>If you are sure, just click on delete it.</p>
+//   </div>
+// `,
+//         showCancelButton: false,
+//         showConfirmButton: true,
+//         confirmButtonText: 'Delete this item',
+//         cancelButtonText: 'Cancel',
+//         customClass: {
+//           confirmButton: 'my-btn-danger',
+//           cancelButton: 'my-btn-neutral',
+//           popup: 'my-swal-popup',
+//         },
+//         buttonsStyling: false,
+//       }).then((result) => {
+//         if (result.isConfirmed) {
+//           console.log('Item deleted');
+//         }
+//       });
+//--------------------------------------------------//
+// auth module styles
+section {
+  background: url(../src/assets/images/bg-auth.png) center / cover no-repeat;
+  min-height: 100vh;
+  padding-block: 30px;
+
+  .auth_component {
+    background-color: #ffffff;
+    width: 70%;
+    padding: 20px 50px;
+    border-radius: 16px;
+
+    .logo {
+      img {
+        max-width: 90%;
+      }
+    }
+
+    .header_auth {
+      h1 {
+        color: #494949;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 25px;
+      }
+
+      p {
+        color: #49494999;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+      }
+    }
+
+    .form-content {
+
+
+      .input-group {
+        border-radius: 16px;
+        background-color: #f7f7f7;
+
+        .input-group-text {
+          color: #8391A1;
+          border-color: transparent;
+
+          &.left {
+            border-right: 2px solid #8391A1;
+          }
+        }
+
+        input {
+          background-color: #f7f7f7;
+          border: none;
+        }
+      }
+
+      .links {
+        .link {
+          text-decoration: none;
+          color: #3A3A3D;
+        }
+
+        .link_green {
+          text-decoration: none;
+          color: #4AA35A;
+        }
+      }
+    }
+  }
+}
+
+
+button {
+  border: none;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: 700;
+
+  &.btn_green {
+    background: #4AA35A;
+    color: #fff;
+  }
+
+  &.btn_outline {
+    background: transparent;
+    color: red;
+    border: 1px solid red;
+  }
+
+}
+
+//---------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+// sweetAlert
+.my-btn-danger {
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.my-btn-neutral {
+  background-color: #bdc3c7;
+  color: black;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  margin: 0 10px;
+}
+
+.my-swal-popup {
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+}

@@ -1,0 +1,16 @@
+.section {
+    background-image: url(../../../../assets/images/bg-notFound.png);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: auto 100%;
+    color: black;
+    padding: 40px 20px;
+
+    .row {
+        p {
+            letter-spacing: 2px;
+        }
+
+    }
+}

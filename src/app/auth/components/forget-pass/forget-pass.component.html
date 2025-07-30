@@ -1,0 +1,41 @@
+<section>
+    <div class="container ">
+        <div class="row min-vh-100 justify-content-center align-items-center">
+            <div class="auth_component d-flex flex-column row-gap-2">
+                <div class="logo text-center">
+                    <img src="../../../assets/images/logo.png" alt="logo">
+                </div>
+                <div class="header_auth">
+                    <h1>Forgot Your Password?</h1>
+                    <p>No worries! Please enter your email and we will send a password reset link </p>
+                </div>
+                <div class="form-content">
+                    <form [formGroup]="forgetForm" (ngSubmit)="login(forgetForm)">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text left" id="email"><i class="fa-regular fa-envelope"></i></span>
+                            <input formControlName="email" type="text" class="form-control"
+                                placeholder="Enter your email" aria-label="email" aria-describedby="email">
+                        </div>
+                        <ng-container
+                            *ngIf="forgetForm.get('email')?.touched && forgetForm.get('email')?.errors?.['required']">
+                            <p class="alert alert-danger text-center" role="alert">
+                                Oops! email required!
+                            </p>
+
+                        </ng-container>
+                        <ng-container
+                            *ngIf="forgetForm.get('email')?.touched && forgetForm.get('email')?.errors?.['email']">
+                            <p class="alert alert-warning text-center">
+                                Invalid email address
+                            </p>
+                        </ng-container>
+
+                        <div class="text-center my-5">
+                            <button [disabled]="forgetForm.invalid" class="btn_green w-100">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

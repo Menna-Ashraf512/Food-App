@@ -1,0 +1,173 @@
+<section>
+    <div class="container ">
+        <div class="row min-vh-100 justify-content-center align-items-center">
+            <div class="auth_component d-flex flex-column row-gap-2">
+                <div class="logo text-center">
+                    <img src="../../../assets/images/logo.png" alt="logo">
+                </div>
+                <div class="header_auth">
+                    <h1>Register</h1>
+                    <p>Welcome Back! Please enter your details</p>
+                </div>
+                <div class="form-content">
+                    <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+                        <div class="row flex-wrap gy-3">
+                            <div class="col-md-12 my-2 mx-auto">
+                                <ngx-dropzone (change)="onSelect($event)">
+                                    <ngx-dropzone-label>Drop it, image!</ngx-dropzone-label>
+
+                                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true"
+                                        (removed)="onRemove(f)">
+                                        <ngx-dropzone-image-preview [file]="f">
+                                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                        </ngx-dropzone-image-preview>
+                                    </ngx-dropzone-preview>
+                                </ngx-dropzone>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text left" id="userName"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input formControlName="userName" type="text" class="form-control"
+                                        placeholder="Enter your User Name" aria-label="userName"
+                                        aria-describedby="userName">
+                                </div>
+                                <ng-container
+                                    *ngIf="registerForm.get('userName')?.touched && registerForm.get('userName')?.errors?.['required']">
+                                    <p class="alert alert-danger text-center" role="alert">
+                                        Oops! userName required!
+                                    </p>
+                                </ng-container>
+                                <ng-container
+                                    *ngIf="registerForm.get('userName')?.touched && registerForm.get('userName')?.errors?.['pattern']">
+                                    <p class="alert alert-warning text-center">
+                                        Username must start with letters, end with one number, and be 8 characters max.
+
+                                    </p>
+                                </ng-container>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text left" id="email"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input formControlName="email" type="text" class="form-control"
+                                        placeholder="Enter your email" aria-label="email" aria-describedby="email">
+                                </div>
+                                <ng-container
+                                    *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">
+
+                                    <p class="alert alert-danger text-center" role="alert">
+                                        Oops! email required!
+                                    </p>
+
+                                </ng-container>
+
+                                <ng-container
+                                    *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email']">
+                                    <p class="alert alert-warning text-center">
+                                        Invalid email address
+                                    </p>
+                                </ng-container>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text left" id="phoneNumber"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input formControlName="phoneNumber" type="text" class="form-control"
+                                        placeholder="Enter your phone Number" aria-label="phoneNumber"
+                                        aria-describedby="phoneNumber">
+                                </div>
+                                <ng-container
+                                    *ngIf="registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.errors?.['required']">
+
+                                    <p class="alert alert-danger text-center" role="alert">
+                                        Oops! phone Number required!
+                                    </p>
+
+                                </ng-container>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text left" id="country"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input formControlName="country" type="text" class="form-control"
+                                        placeholder="Enter your Country" aria-label="country"
+                                        aria-describedby="country">
+                                </div>
+                                <ng-container
+                                    *ngIf="registerForm.get('country')?.touched && registerForm.get('country')?.errors?.['required']">
+
+                                    <p class="alert alert-danger text-center" role="alert">
+                                        Oops! country required!
+                                    </p>
+
+                                </ng-container>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text left"><i class="fa-solid fa-lock"></i></span>
+                                    <input formControlName="password" [type]="isHide?'password':'text'"
+                                        class="form-control" placeholder="Password" aria-label="password">
+                                    <button type="button" (click)="isHide=!isHide" class="input-group-text"><i
+                                            class="fa-regular" [ngClass]="isHide?'fa-eye-slash':'fa-eye'"></i></button>
+                                </div>
+                                <ng-container
+                                    *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']">
+                                    <p class="alert alert-danger text-center" role="alert">
+                                        Oops! password required!
+                                    </p>
+
+                                </ng-container>
+
+                                <ng-container
+                                    *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['pattern']">
+                                    <p class="alert alert-warning text-center" role="alert">
+                                        Max 10 chars, must include uppercase, lowercase, number & special character.
+                                    </p>
+                                </ng-container>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text left"><i class="fa-solid fa-lock"></i></span>
+                                    <input formControlName="confirmPassword"
+                                        [type]="isHideConfirmPassword?'password':'text'" class="form-control"
+                                        placeholder="confirmPassword" aria-label="confirmPassword">
+                                    <button type="button" (click)="isHideConfirmPassword=!isHideConfirmPassword"
+                                        class="input-group-text"><i class="fa-regular"
+                                            [ngClass]="isHideConfirmPassword?'fa-eye-slash':'fa-eye'"></i></button>
+                                </div>
+                                <ng-container
+                                    *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.errors?.['required']">
+                                    <p class="alert alert-danger text-center" role="alert">
+                                        Oops! confirmPassword required!
+                                    </p>
+                                </ng-container>
+                                <ng-container
+                                    *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">
+                                    <p class="alert alert-warning text-center" role="alert">
+                                        Passwords must match
+                                    </p>
+                                </ng-container>
+                            </div>
+                        </div>
+
+                        <div class="links d-flex justify-content-between">
+                            <a routerLink="/auth/login" class="link_green">Login Now?</a>
+                            <a routerLink="/auth/verifyPass" class="link_green">Verify Now?</a>
+                        </div>
+                        <div class="text-center my-4">
+
+                            <button [disabled]="registerForm.invalid" class="btn_green w-100">
+                                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"
+                                    aria-hidden="true"></span>
+                                <span role="status"> Register</span>
+
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

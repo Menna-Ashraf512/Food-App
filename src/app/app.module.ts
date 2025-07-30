@@ -3,16 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GlobalInterceptor } from './core/interceptor/global.interceptor';
+import { SharedModule } from './shared/shared.module';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [AppComponent, NotFoundComponent],
+  imports: [BrowserModule, SharedModule, AppRoutingModule, DashboardModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalInterceptor,
+      multi: true,
+    },
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
