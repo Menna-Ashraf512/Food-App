@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
 import {
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './verify-pass.component.html',
   styleUrls: ['./verify-pass.component.scss'],
 })
-export class VerifyPassComponent {
+export class VerifyPassComponent implements OnInit {
   message: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,18 +8,28 @@ import { Router } from '@angular/router';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss'],
 })
-export class LogInComponent {
+export class LogInComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   isHide: boolean = true;
 
   loginForm = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
+    email: new FormControl<string | null>(null, [
+      Validators.required,
+      Validators.email,
+    ]),
     password: new FormControl(null, [
       Validators.required,
       Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{1,10}$/),
     ]),
   });
+
+  ngOnInit() {
+    const email = localStorage.getItem('emailToVerify');
+    if (email) {
+      this.loginForm.patchValue({ email: email.trim() });
+    }
+  }
 
   login(data: FormGroup) {
     this.authService.login(data.value).subscribe({
