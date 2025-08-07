@@ -1,0 +1,61 @@
+nav {
+    margin: 20px 10px;
+    padding-block: 15px;
+    border-radius: 16px;
+
+    .input_search {
+        position: relative;
+        border-radius: 6px;
+        background: #F8F9FB;
+        padding: 10px 10px 10px 36px;
+
+        input {
+            width: 100%;
+            background: #FFFFFF;
+            border-color: transparent;
+            border-radius: 15px;
+            padding: 5px 25px;
+            font-size: 14px;
+            outline: none;
+            color: #1F263E;
+            font-family: Inter;
+            font-weight: 500;
+
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            font-size: 14px;
+        }
+
+
+    }
+
+    .img_Profile {
+        img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border: 1px solid red;
+            border-radius: 50%;
+        }
+
+        h4 {
+            color: #1F384C;
+            font-family: Inter;
+            font-weight: 500;
+            font-size: 17px;
+
+        }
+    }
+
+    .dropdown {
+        .btn_dropdown {
+            background: transparent;
+        }
+    }
+
+}
