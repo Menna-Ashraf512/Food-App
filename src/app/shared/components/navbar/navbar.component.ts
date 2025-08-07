@@ -7,16 +7,20 @@ import { AuthService } from 'src/app/core/auth/services/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  imgProfile: any;
+  imgProfile: string = '';
+  userName: string = '';
+  baseUrl = 'https://upskilling-egypt.com:3006/';
+
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
     this.getImage();
   }
+
   getImage() {
     this.authService.getProfileImage().subscribe({
       next: (res) => {
-        this.imgProfile = res.imagePath;
-        console.log(this.imgProfile);
+        this.imgProfile = this.baseUrl + res.imagePath;
+        this.userName = res.userName;
       },
     });
   }
