@@ -1,0 +1,115 @@
+section {
+    min-height: 140vh;
+
+    .content_welcome {
+        background-image: url(../../../../assets/images/bg-homePage.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 16px;
+
+        .row {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .title {
+            padding-inline: 50px;
+
+            .header {
+                display: flex;
+                align-items: center;
+                column-gap: 9px;
+
+                h2 {
+                    font-family: Roboto;
+                    font-weight: 700;
+                    font-style: Bold;
+                    font-size: 40px;
+                    color: #ffffff;
+
+                }
+
+                span {
+                    font-family: Roboto;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 32px;
+                    color: #DFE0E0;
+                }
+            }
+
+            p {
+                font-family: Roboto;
+                font-weight: 400;
+                font-style: Regular;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 4%;
+                color: #ffffff;
+
+            }
+        }
+
+        .img_welcome {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .content_recipe {
+        background-color: #F0FFEF;
+        border-radius: 16px;
+        color: #1F263E;
+        margin-block: 40px;
+        padding-block: 20px;
+
+        .row {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .title {
+            padding-inline: 50px;
+
+            .header {
+                display: flex;
+                align-items: center;
+                column-gap: 9px;
+
+                h2 {
+                    font-family: Roboto;
+                    font-weight: 700;
+                    font-style: Bold;
+                    font-size: 40px;
+                    color: #1F263E;
+
+
+                }
+
+                span {
+                    font-family: Roboto;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 32px;
+                    color: #4AA35A;
+
+                }
+            }
+
+            p {
+                font-family: Roboto;
+                font-weight: 400;
+                font-style: Regular;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 4%;
+                color: #1F263E;
+
+            }
+        }
+    }
+}

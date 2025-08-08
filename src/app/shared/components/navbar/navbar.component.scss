@@ -1,34 +1,32 @@
 section {
     margin: 20px 10px;
-    padding-block: 15px;
+    padding-block: 8px;
     border-radius: 16px;
+    background: #F8F9FB;
 
     .input_search {
+            width: 100%;
+          box-sizing: border-box; 
         position: relative;
-        border-radius: 6px;
-        background: #F8F9FB;
-        padding: 10px 10px 10px 36px;
 
         input {
             width: 100%;
             background: #FFFFFF;
             border-color: transparent;
             border-radius: 15px;
-            padding: 5px 25px;
+            padding: 9px 30px;
             font-size: 14px;
             outline: none;
             color: #1F263E;
             font-family: Inter;
             font-weight: 500;
-
         }
 
         i {
             position: absolute;
             top: 50%;
-            left: 20px;
             transform: translateY(-50%);
-            font-size: 14px;
+            left: 24px;
         }
 
 

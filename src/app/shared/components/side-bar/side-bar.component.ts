@@ -130,13 +130,13 @@ export class SideBarComponent {
     {
       title: 'Home',
       icon: 'fa-house',
-      menuLink: '/dashboard',
+      menuLink: '/dashboard/home',
       isActive: this.isAdmin() || this.isUser(),
     },
     {
       title: 'Users',
       icon: 'fa-users',
-      menuLink: '/dashboard/home',
+      menuLink: '/dashboard/admin/users',
       isActive: this.isAdmin(),
     },
     {
