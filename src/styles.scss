@@ -46,73 +46,76 @@ body {
 //--------------------------------------------------//
 // auth module styles
 section {
-  background: url(../src/assets/images/bg-auth.png) center / cover no-repeat;
-  min-height: 100vh;
-  padding-block: 30px;
+  &.auth {
+    background: url(../src/assets/images/bg-auth.png) center / cover no-repeat;
+    min-height: 100vh;
+    padding-block: 30px;
 
-  .auth_component {
-    background-color: #ffffff;
-    width: 70%;
-    padding: 20px 50px;
-    border-radius: 16px;
+    .auth_component {
+      background-color: #ffffff;
+      width: 70%;
+      padding: 20px 50px;
+      border-radius: 16px;
 
-    .logo {
-      img {
-        max-width: 90%;
-      }
-    }
-
-    .header_auth {
-      h1 {
-        color: #494949;
-        font-weight: 700;
-        font-style: Bold;
-        font-size: 25px;
+      .logo {
+        img {
+          max-width: 90%;
+        }
       }
 
-      p {
-        color: #49494999;
-        font-weight: 400;
-        font-style: Regular;
-        font-size: 16px;
+      .header_auth {
+        h1 {
+          color: #494949;
+          font-weight: 700;
+          font-style: Bold;
+          font-size: 25px;
+        }
+
+        p {
+          color: #49494999;
+          font-weight: 400;
+          font-style: Regular;
+          font-size: 16px;
+        }
       }
-    }
 
-    .form-content {
+      .form-content {
 
 
-      .input-group {
-        border-radius: 16px;
-        background-color: #f7f7f7;
+        .input-group {
+          border-radius: 16px;
+          background-color: #f7f7f7;
 
-        .input-group-text {
-          color: #8391A1;
-          border-color: transparent;
+          .input-group-text {
+            color: #8391A1;
+            border-color: transparent;
 
-          &.left {
-            border-right: 2px solid #8391A1;
+            &.left {
+              border-right: 2px solid #8391A1;
+            }
+          }
+
+          input {
+            background-color: #f7f7f7;
+            border: none;
           }
         }
 
-        input {
-          background-color: #f7f7f7;
-          border: none;
-        }
-      }
+        .links {
+          .link {
+            text-decoration: none;
+            color: #3A3A3D;
+          }
 
-      .links {
-        .link {
-          text-decoration: none;
-          color: #3A3A3D;
-        }
-
-        .link_green {
-          text-decoration: none;
-          color: #4AA35A;
+          .link_green {
+            text-decoration: none;
+            color: #4AA35A;
+          }
         }
       }
     }
   }
+
 }
 
 
