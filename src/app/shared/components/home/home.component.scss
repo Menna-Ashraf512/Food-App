@@ -7,12 +7,15 @@ section {
         background-position: center center;
         background-size: cover;
         border-radius: 16px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
 
         .row {
             justify-content: space-between;
             align-items: center;
         }
-
 
         .title {
             padding-inline: 50px;
@@ -25,16 +28,13 @@ section {
                 h2 {
                     font-family: Roboto;
                     font-weight: 700;
-                    font-style: Bold;
                     font-size: 40px;
                     color: #ffffff;
-
                 }
 
                 span {
                     font-family: Roboto;
                     font-weight: 400;
-                    font-style: Regular;
                     font-size: 32px;
                     color: #DFE0E0;
                 }
@@ -43,18 +43,77 @@ section {
             p {
                 font-family: Roboto;
                 font-weight: 400;
-                font-style: Regular;
                 font-size: 16px;
                 line-height: 24px;
                 letter-spacing: 4%;
                 color: #ffffff;
-
             }
         }
 
         .img_welcome {
+            text-align: center;
+
             img {
-                width: 100%;
+                width: 70%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 992px) {
+        .content_welcome {
+            flex-direction: column;
+            text-align: center;
+
+            .title {
+                padding-inline: 20px;
+
+                .header {
+                    justify-content: center;
+
+                    h2 {
+                        font-size: 32px;
+                    }
+
+                    span {
+                        font-size: 28px;
+                    }
+                }
+
+                p {
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+            }
+
+            .img_welcome img {
+                width: 60%;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        .content_welcome {
+            .title {
+                padding-inline: 10px;
+
+                .header h2 {
+                    font-size: 26px;
+                }
+
+                .header span {
+                    font-size: 22px;
+                }
+
+                p {
+                    font-size: 13px;
+                }
+            }
+
+            .img_welcome img {
+                width: 80%;
             }
         }
     }
