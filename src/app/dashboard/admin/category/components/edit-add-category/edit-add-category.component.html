@@ -1,0 +1,19 @@
+<div class="modal fade" id="AddNewItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="AddNewItemLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-4 rounded-4 shadow-lg border-0">
+            <div class="d-flex  justify-content-between">
+                <h2>Add Category</h2>
+                <button type="button" class="btn btn_close ms-auto" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-xmark text-danger"></i></button>
+            </div>
+            <div>
+                <form [formGroup]="addItemForm" class="d-flex flex-column mt-5 gap-4"
+                    (ngSubmit)="AddItem(addItemForm.value)">
+                    <input formControlName="name" type="text" class="form-control" placeholder="Category Name ">
+                    <button type="submit" class="btn_green ms-auto">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
