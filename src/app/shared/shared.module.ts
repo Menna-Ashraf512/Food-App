@@ -28,6 +28,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule,
   ],
   exports: [
+    DeleteItemComponent,
     NavbarComponent,
     SideBarComponent,
     HomeComponent,

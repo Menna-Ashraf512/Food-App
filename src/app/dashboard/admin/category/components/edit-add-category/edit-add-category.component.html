@@ -3,15 +3,14 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content p-4 rounded-4 shadow-lg border-0">
             <div class="d-flex  justify-content-between">
-                <h2>Add Category</h2>
+                <h2>{{itemId?'Edit':'Add'}} Category</h2>
                 <button type="button" class="btn btn_close ms-auto" data-bs-dismiss="modal" aria-label="Close"><i
                         class="fa-solid fa-xmark text-danger"></i></button>
             </div>
             <div>
-                <form [formGroup]="addItemForm" class="d-flex flex-column mt-5 gap-4"
-                    (ngSubmit)="AddItem(addItemForm.value)">
+                <form [formGroup]="addItemForm" class="d-flex flex-column mt-5 gap-4" (ngSubmit)="saveItem()">
                     <input formControlName="name" type="text" class="form-control" placeholder="Category Name ">
-                    <button type="submit" class="btn_green ms-auto">Save</button>
+                    <button type="submit" class="btn_green ms-auto">{{itemId?'Update':'Save'}}</button>
                 </form>
             </div>
         </div>

@@ -53,9 +53,30 @@
                                     class="fa-solid fa-ellipsis"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <a class="dropdown-item d-flex  align-items-center gap-2">
+                                        <i class="fa-regular second_color fa-eye"></i>
+                                        View
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
+                                        data-bs-target="#AddNewItem"
+                                        class="dropdown-item d-flex  align-items-center gap-2">
+                                        <i class="fa-regular second_color fa-pen-to-square"></i>
+                                        Edit
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
+                                        data-bs-target="#deleteItem"
+                                        class="dropdown-item d-flex  align-items-center gap-2">
+                                        <i class="fa-regular second_color fa-trash-can"></i>
+
+                                        Delete
+                                    </a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -85,4 +106,5 @@
     </div>
 </section>
 
-<app-edit-add-category></app-edit-add-category>
+<app-edit-add-category [itemId]="selectedItemId" (confirmEdit)="getAllCategory()"></app-edit-add-category>
+<app-delete-item [itemId]="selectedItemId" (confirmDelete)="deleteItem($event)"></app-delete-item>

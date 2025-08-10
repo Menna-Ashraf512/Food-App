@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -20,13 +19,10 @@ $Food-App-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$Food-App-theme: mat.define-light-theme((
-  color: (
-    primary: $Food-App-primary,
-    accent: $Food-App-accent,
-    warn: $Food-App-warn,
-  )
-));
+$Food-App-theme: mat.define-light-theme((color: (primary: $Food-App-primary,
+        accent: $Food-App-accent,
+        warn: $Food-App-warn,
+      )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -62,11 +58,7 @@ body {
 
 //       Swal.fire({
 //         html: `
-//   <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-//     <img src="assets/images/vector-puppis.png" width="200" alt="Delete Image" />
-//     <h2 style="margin: 0;">Delete This Item?</h2>
-//     <p>Are you sure you want to delete this item?<br>If you are sure, just click on delete it.</p>
-//   </div>
+
 // `,
 //         showCancelButton: false,
 //         showConfirmButton: true,
@@ -217,5 +209,13 @@ button {
   width: 100%;
   max-width: 500px;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
