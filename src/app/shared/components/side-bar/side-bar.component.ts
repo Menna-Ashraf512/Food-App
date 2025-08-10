@@ -104,17 +104,12 @@ export class SideBarComponent {
 
   closeModal() {
     const modalElement = document.getElementById('staticBackdrop');
-    if (modalElement) {
-      let modalInstance = (window as any).bootstrap.Modal.getInstance(
-        modalElement
-      );
+    if (!modalElement) return;
 
-      if (!modalInstance) {
-        modalInstance = new (window as any).bootstrap.Modal(modalElement);
-      }
-
-      modalInstance.hide();
-    }
+    const modal = (window as any).bootstrap.Modal.getOrCreateInstance(
+      modalElement
+    );
+    modal.hide();
   }
 
   // --------------------------------------------------------//
