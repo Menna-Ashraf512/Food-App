@@ -61,11 +61,13 @@ export class EditAddCategoryComponent implements OnChanges {
     this.categoryService.AddCategory(data.value).subscribe({
       next: () => {
         this.showToast('success', 'Category added successfully');
-        this.closeModal();
-        this.confirmEdit.emit();
       },
       error: (err) => {
         this.showToast('error', err.error.message);
+      },
+      complete: () => {
+        this.closeModal();
+        this.confirmEdit.emit();
       },
     });
   }
@@ -76,13 +78,15 @@ export class EditAddCategoryComponent implements OnChanges {
       .subscribe({
         next: () => {
           this.showToast('success', 'Category updated successfully');
-          this.confirmEdit.emit();
         },
         error: (err) => {
           this.showToast('error', err.error.message);
         },
         complete: () => {
+          this.addItemForm.reset();
+          this.itemId = 0;
           this.closeModal();
+          this.confirmEdit.emit();
         },
       });
   }

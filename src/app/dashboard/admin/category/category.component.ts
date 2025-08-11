@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from './service/category.service';
 import { ICategory, ICategoryData } from './interfaces/category';
 import Swal from 'sweetalert2';
