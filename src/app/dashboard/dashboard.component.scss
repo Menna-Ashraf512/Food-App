@@ -1,0 +1,15 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+
+    .sidebar_area {
+        flex: 0 0 60px;
+    }
+
+    .main_content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}

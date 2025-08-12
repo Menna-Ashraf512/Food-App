@@ -2,6 +2,7 @@ section {
     min-height: 140vh;
 
 
+
     .content_welcome {
         background-image: url(../../../../assets/images/bg-homePage.png);
         background-repeat: no-repeat;
@@ -61,6 +62,7 @@ section {
     }
 
     .categories_header {
+
         h3 {
             font-family: Poppins;
             font-weight: 500;
@@ -76,6 +78,39 @@ section {
             font-size: 14px;
             color: var(--primary-color);
         }
+    }
+
+    .input_search {
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        margin-bottom: 20px;
+
+        input {
+            width: 100%;
+            background: #FFFFFF;
+            border: 2px solid gray;
+            border-radius: 10px;
+            padding: 9px 32px;
+            color: #1F263E;
+            font-family: Inter;
+            font-weight: 500;
+
+            &:focus {
+                box-shadow: 0 0 0 4px rgba(74, 163, 90, 0.4);
+                border-color: var(--secondary-color);
+
+            }
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+        }
+
+
     }
 
     table {

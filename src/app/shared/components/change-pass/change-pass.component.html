@@ -1,0 +1,100 @@
+<!-- Modal -->
+<div class="modal  fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="changePasswordLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-lg">
+        <section class="mx-auto">
+            <div class="row mx-auto modal-content justify-content-center align-items-center">
+                <div class="auth_component w-100 d-flex flex-column">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+
+                    </div>
+                    <div class="logo text-center mb-3">
+                        <img src="../../../assets/images/logo.png" alt="logo">
+                    </div>
+                    <div class="header_auth">
+                        <h1>Change Your Password</h1>
+                        <p>Enter your details below</p>
+                    </div>
+                    <div class="form-content">
+                        <form [formGroup]="changeForm" (ngSubmit)="changePass(changeForm)">
+                            <!-- old password -->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text left"><i class="fa-solid fa-lock"></i></span>
+                                <input formControlName="oldPassword" [type]="isHide?'password':'text'"
+                                    class="form-control" placeholder="oldPassword" aria-label="oldPassword">
+                                <button type="button" (click)="isHide=!isHide" class="input-group-text"><i
+                                        class="fa-regular" [ngClass]="isHide?'fa-eye-slash':'fa-eye'"></i></button>
+                            </div>
+                            <ng-container
+                                *ngIf="changeForm.get('oldPassword')?.touched && changeForm.get('oldPassword')?.errors?.['required']">
+                                <p class="alert alert-danger text-center" role="alert">
+                                    Oops! oldPassword required!
+                                </p>
+
+                            </ng-container>
+                            <ng-container
+                                *ngIf="changeForm.get('oldPassword')?.touched && changeForm.get('oldPassword')?.errors?.['pattern']">
+                                <p class="alert alert-warning text-center" role="alert">
+                                    Max 10 chars, must include uppercase, lowercase, number & special
+                                    character.
+                                </p>
+                            </ng-container>
+                            <!-- new password -->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text left"><i class="fa-solid fa-lock"></i></span>
+                                <input formControlName="newPassword" [type]="isHideNew?'password':'text'"
+                                    class="form-control" placeholder="newPassword" aria-label="newPassword">
+                                <button type="button" (click)="isHideNew=!isHideNew" class="input-group-text"><i
+                                        class="fa-regular" [ngClass]="isHideNew?'fa-eye-slash':'fa-eye'"></i></button>
+                            </div>
+                            <ng-container
+                                *ngIf="changeForm.get('newPassword')?.touched && changeForm.get('newPassword')?.errors?.['newPassword']">
+                                <p class="alert alert-danger text-center" role="alert">
+                                    Oops! newPassword required!
+                                </p>
+
+                            </ng-container>
+                            <ng-container
+                                *ngIf="changeForm.get('newPassword')?.touched && changeForm.get('newPassword')?.errors?.['pattern']">
+                                <p class="alert alert-warning text-center" role="alert">
+                                    Max 10 chars, must include uppercase, lowercase, number & special
+                                    character.
+                                </p>
+                            </ng-container>
+                            <!-- confirm New Password -->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text left"><i class="fa-solid fa-lock"></i></span>
+                                <input formControlName="confirmNewPassword" [type]="isHideConfirm?'password':'text'"
+                                    class="form-control" placeholder="confirmNewPassword"
+                                    aria-label="confirmNewPassword">
+                                <button type="button" (click)="isHideConfirm=!isHideConfirm" class="input-group-text"><i
+                                        class="fa-regular"
+                                        [ngClass]="isHideConfirm?'fa-eye-slash':'fa-eye'"></i></button>
+                            </div>
+                            <ng-container
+                                *ngIf="changeForm.get('confirmNewPassword')?.touched && changeForm.get('confirmNewPassword')?.errors?.['required']">
+                                <p class="alert alert-danger text-center" role="alert">
+                                    Oops! confirmNewPassword required!
+                                </p>
+
+                            </ng-container>
+                            <ng-container
+                                *ngIf="changeForm.get('confirmNewPassword')?.touched && changeForm.get('confirmNewPassword')?.errors?.['pattern']">
+                                <p class="alert alert-warning text-center" role="alert">
+                                    Max 10 chars, must include uppercase, lowercase, number & special
+                                    character.
+                                </p>
+                            </ng-container>
+                            <div class="text-center my-4">
+                                <button [disabled]="changeForm.invalid" class="btn_green w-100">Change
+                                    Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

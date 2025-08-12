@@ -8,6 +8,7 @@ import { VerifyPassComponent } from './components/verify-pass/verify-pass.compon
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { ChangePassComponent } from '../../shared/components/change-pass/change-pass.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,5 +33,6 @@ const routes: Routes = [
     VerifyPassComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
+  exports: [],
 })
 export class AuthModule {}

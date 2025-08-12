@@ -1,12 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { AuthService } from 'src/app/core/auth/services/auth.service';
-import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface IMenu {
   title: string;
@@ -22,97 +15,13 @@ interface IMenu {
 })
 export class SideBarComponent {
   hovered: boolean = false;
-  isHide: boolean = true;
-
-  constructor(private authService: AuthService) {}
-
-  //change password formGroup
-  changeForm = new FormGroup(
-    {
-      oldPassword: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{1,10}$/
-        ),
-      ]),
-      newPassword: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{1,10}$/
-        ),
-      ]),
-      confirmNewPassword: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{1,10}$/
-        ),
-      ]),
-    },
-    { validators: this.confirmPassword }
-  );
-
-  // validation confirm Password
-  confirmPassword(group: AbstractControl) {
-    const newPassword = group.get('newPassword')?.value;
-    const confirmNPassword = group.get('confirmNewPassword')?.value;
-
-    return newPassword === confirmNPassword ? null : { mismatch: true };
-  }
+  constructor(private router: Router) {}
 
   // --------------------------------------------------------//
-
-  // function change password
-  changePass(data: FormGroup) {
-    this.authService.changePass(data.value).subscribe({
-      next: (res) => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: res.message,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      },
-      error: (err) => {
-        console.log();
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: 'error',
-          title: err.error.message,
-        });
-      },
-      complete: () => {
-        this.closeModal();
-        this.changeForm.reset();
-      },
-    });
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/auth']);
   }
-
-  // --------------------------------------------------------//
-  // modal
-  declare bootstrap: any;
-
-  closeModal() {
-    const modalElement = document.getElementById('staticBackdrop');
-    if (!modalElement) return;
-
-    const modal = (window as any).bootstrap.Modal.getOrCreateInstance(
-      modalElement
-    );
-    modal.hide();
-  }
-
-  // --------------------------------------------------------//
 
   isAdmin(): boolean {
     return localStorage.getItem('role') === 'SuperAdmin' ? true : false;

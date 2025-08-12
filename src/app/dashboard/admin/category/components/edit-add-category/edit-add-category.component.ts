@@ -83,8 +83,7 @@ export class EditAddCategoryComponent implements OnChanges {
           this.showToast('error', err.error.message);
         },
         complete: () => {
-          this.addItemForm.reset();
-          this.itemId = 0;
+          this.enhanceData();
           this.closeModal();
           this.confirmEdit.emit();
         },
@@ -107,5 +106,9 @@ export class EditAddCategoryComponent implements OnChanges {
     if (!modalEl) return;
     const modal = (window as any).bootstrap.Modal.getOrCreateInstance(modalEl);
     modal.hide();
+  }
+  enhanceData() {
+    this.addItemForm.reset();
+    this.itemId = 0;
   }
 }

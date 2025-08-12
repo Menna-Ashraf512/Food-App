@@ -39,42 +39,22 @@ body {
 }
 
 :root {
-  --primary-color: #1F263E;
-  --secondary-color: #4AA35A
+  --primary-color: rgb(31, 38, 62);
+  --secondary-color: rgb(74, 163, 90);
 }
 
 .primary_bg {
-
-  background-color: #1F263E;
+  background-color: rgb(31, 38, 62);
 }
 
 .primary_color {
-  color: #1F263E;
+  color: rgb(31, 38, 62);
 }
 
 .second_color {
-  color: #4AA35A;
+  color: rgb(74, 163, 90);
 }
 
-//       Swal.fire({
-//         html: `
-
-// `,
-//         showCancelButton: false,
-//         showConfirmButton: true,
-//         confirmButtonText: 'Delete this item',
-//         cancelButtonText: 'Cancel',
-//         customClass: {
-//           confirmButton: 'my-btn-danger',
-//           cancelButton: 'my-btn-neutral',
-//           popup: 'my-swal-popup',
-//         },
-//         buttonsStyling: false,
-//       }).then((result) => {
-//         if (result.isConfirmed) {
-//           console.log('Item deleted');
-//         }
-//       });
 //--------------------------------------------------//
 // auth module styles
 section {
@@ -82,67 +62,82 @@ section {
     background: url(../src/assets/images/bg-auth.png) center / cover no-repeat;
     min-height: 100vh;
     padding-block: 30px;
+  }
 
+
+  .auth_component {
+    background-color: #ffffff;
+    width: 60%;
+    padding: 20px 50px;
+    border-radius: 16px;
+
+    .logo {
+      img {
+        width: 100%;
+      }
+    }
+
+    .header_auth {
+      h1 {
+        color: #494949;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 25px;
+      }
+
+      p {
+        color: #49494999;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+      }
+    }
+
+    .form-content {
+
+
+      .input-group {
+        border-radius: 16px;
+        background-color: #f7f7f7;
+
+        .input-group-text {
+          color: #8391A1;
+          border-color: transparent;
+
+          &.left {
+            border-right: 2px solid #8391A1;
+          }
+        }
+
+        input {
+          background-color: #f7f7f7;
+          border: none;
+        }
+      }
+
+      .links {
+        .link {
+          text-decoration: none;
+          color: #3A3A3D;
+        }
+
+        .link_green {
+          text-decoration: none;
+          color: #4AA35A;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
     .auth_component {
-      background-color: #ffffff;
-      width: 65%;
+      width: 50%;
       padding: 20px 50px;
       border-radius: 16px;
 
       .logo {
         img {
-          max-width: 90%;
-        }
-      }
-
-      .header_auth {
-        h1 {
-          color: #494949;
-          font-weight: 700;
-          font-style: Bold;
-          font-size: 25px;
-        }
-
-        p {
-          color: #49494999;
-          font-weight: 400;
-          font-style: Regular;
-          font-size: 16px;
-        }
-      }
-
-      .form-content {
-
-
-        .input-group {
-          border-radius: 16px;
-          background-color: #f7f7f7;
-
-          .input-group-text {
-            color: #8391A1;
-            border-color: transparent;
-
-            &.left {
-              border-right: 2px solid #8391A1;
-            }
-          }
-
-          input {
-            background-color: #f7f7f7;
-            border: none;
-          }
-        }
-
-        .links {
-          .link {
-            text-decoration: none;
-            color: #3A3A3D;
-          }
-
-          .link_green {
-            text-decoration: none;
-            color: #4AA35A;
-          }
+          max-width: 70%;
         }
       }
     }
@@ -166,6 +161,12 @@ button {
     background: transparent;
     color: red;
     border: 1px solid red;
+    transition: all 0.5 ease-in-out;
+
+    &:hover {
+      background: red;
+      color: white;
+    }
   }
 
 }
