@@ -55,7 +55,9 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item d-flex  align-items-center gap-2">
+                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
+                                        data-bs-target="#viewItem"
+                                        class="dropdown-item d-flex  align-items-center gap-2">
                                         <i class="fa-regular second_color fa-eye"></i>
                                         View
                                     </a>
@@ -109,3 +111,4 @@
 
 <app-edit-add-category [itemId]="selectedItemId" (confirmEdit)="getAllCategory()"></app-edit-add-category>
 <app-delete-item [itemId]="selectedItemId" (confirmDelete)="deleteItem($event)"></app-delete-item>
+<app-view [itemId]="selectedItemId"></app-view>

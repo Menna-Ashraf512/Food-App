@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DeleteItemComponent } from './components/delete-item/delete-item.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ChangePassComponent } from './components/change-pass/change-pass.component';
-import { ViewComponent } from './components/view/view.component';
+import { ViewComponent } from '../dashboard/admin/category/components/view/view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,6 @@ import { ViewComponent } from './components/view/view.component';
     HomeComponent,
     DeleteItemComponent,
     ChangePassComponent,
-    ViewComponent,
   ],
   imports: [
     CommonModule,
