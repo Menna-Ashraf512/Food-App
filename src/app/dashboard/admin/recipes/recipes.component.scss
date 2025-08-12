@@ -60,7 +60,7 @@ section {
         }
     }
 
-    .recipe_header {
+    .categories_header {
         h3 {
             font-family: Poppins;
             font-weight: 500;
@@ -109,8 +109,8 @@ section {
                     padding-block: 20px;
 
                     .recipe_img {
-                        width: 80px;
-                        height: 80px;
+                        max-width: 50px;
+                        max-height: 50px;
                         object-fit: cover;
                         border-radius: 8px;
                     }

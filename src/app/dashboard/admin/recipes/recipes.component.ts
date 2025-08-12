@@ -10,10 +10,8 @@ import { IRecipe, RecipeData } from './interfaces/recipe';
 export class RecipesComponent implements OnInit {
   listRecipe: RecipeData[] = [];
   recipeData!: IRecipe;
-  imgRecipe: string = '';
   pageSize!: number;
   pageNumber!: number;
-  name: string = '';
   baseUrl = 'https://upskilling-egypt.com:3006/';
 
   constructor(private recipesService: RecipesService) {}
