@@ -24,22 +24,42 @@
                 <p class="">You can check all details</p>
             </div>
             <div>
-                <button data-bs-toggle="modal" data-bs-target="#AddNewItem" class="btn_green px-3 me-auto">Add New
+                <button routerLink="add" data-bs-toggle="modal" data-bs-target="#AddNewItem"
+                    class="btn_green px-3 me-auto">Add New
                     Item</button>
             </div>
         </div>
         <div class="my-3">
-            <!-- <div class="w-75 mb-4 mx-auto">
-                <input [(ngModel)]="name" (keydown.enter)="getAllCategory()" type="text" class="form-control"
-                    placeholder="Search By Name....">
-            </div> -->
+            <div class="d-flex justify-content-between align-items-center gap-2 mx-auto">
+                <div class="input_search">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input [(ngModel)]="name" (keydown.enter)="getAllRecipes()" type="text" class="form-control"
+                        placeholder="Search By Name....">
+                </div>
+                <mat-form-field>
+                    <mat-label>Tag</mat-label>
+                    <mat-select [(value)]="selectedTag" (selectionChange)="applyFilter()">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let tag of tagsList" value={{tag.id}}>{{tag.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Category</mat-label>
+                    <mat-select [(value)]="selectedCat" (selectionChange)="applyFilter()">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let cat of categoryList" value={{cat.id}}>{{cat.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Image</th>
-                        <th scope="col">Creation Date</th>
-                        <th scope="col">modification Date</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Tag</th>
+                        <th scope="col">Category</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -49,38 +69,41 @@
                         <td>
                             <img class="recipe_img" [src]="item.imagePath" [alt]="item.name">
                         </td>
-                        <td>{{item.creationDate | date:'dd-MM-yyyy'}}</td>
-                        <td>{{item.modificationDate | date:'dd-MM-yyyy'}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.tag.name}}</td>
+                        <td>
+                            <ng-container *ngFor="let cat of item.category; let last = last">
+                                {{ cat.name }}<span *ngIf="!last">, </span>
+                            </ng-container>
+                        </td>
                         <td>
                             <button class="btn border-0" data-bs-toggle="dropdown" aria-expanded="false"><i
                                     class="fa-solid fa-ellipsis"></i>
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <!-- <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                        data-bs-target="#viewItem"
+                                    <a [routerLink]="['view', item.id]"
                                         class="dropdown-item d-flex  align-items-center gap-2">
                                         <i class="fa-regular second_color fa-eye"></i>
                                         View
-                                    </a> -->
+                                    </a>
                                 </li>
                                 <li>
-                                    <!-- <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                        data-bs-target="#AddNewItem"
+                                    <a [routerLink]="['edit', item.id]"
                                         class="dropdown-item d-flex  align-items-center gap-2">
                                         <i class="fa-regular second_color fa-pen-to-square"></i>
                                         Edit
-                                    </a> -->
+                                    </a>
                                 </li>
 
                                 <li>
-                                    <!-- <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                                                            data-bs-target="#deleteItem"
-                                                                            class="dropdown-item d-flex  align-items-center gap-2">
-                                                                            <i class="fa-regular second_color fa-trash-can"></i>
-                                    
-                                                                            Delete
-                                                                        </a> -->
+                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
+                                        data-bs-target="#deleteItem"
+                                        class="dropdown-item d-flex  align-items-center gap-2">
+                                        <i class="fa-regular second_color fa-trash-can"></i>
+                                        Delete
+                                    </a>
                                 </li>
                             </ul>
                         </td>
@@ -111,5 +134,4 @@
     </div>
 </section>
 
-<!-- <app-edit-add-category [itemId]="selectedItemId" (confirmEdit)="getAllCategory()"></app-edit-add-category>
-<app-delete-item [itemId]="selectedItemId" (confirmDelete)="deleteItem($event)"></app-delete-item> -->
+<app-delete-item [itemId]="selectedItemId" (confirmDelete)="deleteItem($event)"></app-delete-item>

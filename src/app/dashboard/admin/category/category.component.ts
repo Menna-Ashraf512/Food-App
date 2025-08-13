@@ -37,7 +37,7 @@ export class CategoryComponent implements OnInit {
 
   handlePageEvent(e: any) {
     this.pageSize = e.pageSize;
-    this.pageNumber = e.pageIndex;
+    this.pageNumber = e.pageIndex + 1;
     this.getAllCategory();
   }
 

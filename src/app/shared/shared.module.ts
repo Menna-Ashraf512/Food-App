@@ -10,8 +10,9 @@ import { HomeComponent } from './components/home/home.component';
 import { DeleteItemComponent } from './components/delete-item/delete-item.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ChangePassComponent } from './components/change-pass/change-pass.component';
-import { ViewComponent } from '../dashboard/admin/category/components/view/view.component';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -29,6 +30,8 @@ import { ViewComponent } from '../dashboard/admin/category/components/view/view.
     RouterLinkActive,
     FormsModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   exports: [
     DeleteItemComponent,
@@ -42,6 +45,8 @@ import { ViewComponent } from '../dashboard/admin/category/components/view/view.
     RouterLinkActive,
     FormsModule,
     MatPaginatorModule,
+    MatInputModule,
+    MatSelectModule,
   ],
 })
 export class SharedModule {}

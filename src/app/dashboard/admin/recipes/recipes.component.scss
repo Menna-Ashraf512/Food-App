@@ -78,6 +78,58 @@ section {
         }
     }
 
+    .input_search {
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+
+        input {
+            width: 100%;
+            background: #FFFFFF;
+            border: 1px solid #E0E2E7;
+            border-radius: 10px;
+            padding: 14px 32px;
+            color: #1F263E;
+            font-family: Inter;
+            font-weight: 500;
+
+            &:focus {
+                box-shadow: 0 0 0 4px rgba(74, 163, 90, 0.4);
+                border-color: var(--secondary-color);
+
+            }
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+        }
+
+
+    }
+
+
+
+    .mat-mdc-text-field-wrapper {
+        background: #000;
+    }
+
+    .mat-select-value {
+        color: #4caf50;
+        font-weight: bold;
+    }
+
+    .mat-option {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .mat-option:hover {
+        background-color: #e8f5e9 !important;
+    }
+
     table {
 
         thead {
@@ -118,7 +170,4 @@ section {
             }
         }
     }
-
-
-
 }

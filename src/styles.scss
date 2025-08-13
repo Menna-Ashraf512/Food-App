@@ -36,6 +36,7 @@ $Food-App-theme: mat.define-light-theme((color: (primary: $Food-App-primary,
 body {
   font-family: "inter", sans-serif;
   background: #ffffff;
+  height: 100%;
 }
 
 :root {
@@ -171,15 +172,18 @@ button {
 
 }
 
+
 //---------------------------------------------------------------//
 
+.mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
+  cursor: pointer;
+  background-color: #FFFFFF;
+  border: 1px solid #E0E2E7;
+  border-radius: 16px;
+  margin-top: 20px;
+}
 
-
-
-
-
-
-
+//---------------------------------------------------------------//
 
 
 // sweetAlert
@@ -209,14 +213,4 @@ button {
   border-radius: 12px;
   width: 100%;
   max-width: 500px;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
