@@ -1,0 +1,173 @@
+section {
+    min-height: 140vh;
+
+
+    .content_welcome {
+        background-image: url(../../../../assets/images/bg-homePage.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 16px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+
+        .row {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title {
+            padding-inline: 50px;
+
+            .header {
+                display: flex;
+                align-items: center;
+                column-gap: 9px;
+
+                h2 {
+                    font-family: Roboto;
+                    font-weight: 700;
+                    font-size: 40px;
+                    color: #ffffff;
+                }
+
+                span {
+                    font-family: Roboto;
+                    font-weight: 400;
+                    font-size: 32px;
+                    color: #DFE0E0;
+                }
+            }
+
+            p {
+                font-family: Roboto;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 4%;
+                color: #ffffff;
+            }
+        }
+
+        .img_welcome {
+            text-align: center;
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .categories_header {
+        h3 {
+            font-family: Poppins;
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        p {
+            font-family: Poppins;
+            font-weight: 400;
+            font-style: Regular;
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+    }
+
+    .input_search {
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+
+        input {
+            width: 100%;
+            background: #FFFFFF;
+            border: 1px solid #E0E2E7;
+            border-radius: 10px;
+            padding: 14px 32px;
+            color: #1F263E;
+            font-family: Inter;
+            font-weight: 500;
+
+            &:focus {
+                box-shadow: 0 0 0 4px rgba(74, 163, 90, 0.4);
+                border-color: var(--secondary-color);
+
+            }
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+        }
+
+
+    }
+
+
+
+    .mat-mdc-text-field-wrapper {
+        background: #000;
+    }
+
+    .mat-select-value {
+        color: #4caf50;
+        font-weight: bold;
+    }
+
+    .mat-option {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .mat-option:hover {
+        background-color: #e8f5e9 !important;
+    }
+
+    table {
+
+        thead {
+            tr {
+                th {
+                    background: #E2E5EB;
+                    color: var(--primary-color);
+                    padding-block: 20px;
+                    text-align: center;
+                    border: none;
+                }
+
+                th:first-child {
+                    border-top-left-radius: 17px;
+                    border-bottom-left-radius: 17px;
+                }
+
+                th:last-child {
+                    border-top-right-radius: 17px;
+                    border-bottom-right-radius: 17px;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    text-align: center;
+                    padding-block: 20px;
+
+                    .recipe_img {
+                        max-width: 50px;
+                        max-height: 50px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                    }
+                }
+            }
+        }
+    }
+}

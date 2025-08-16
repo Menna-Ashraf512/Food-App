@@ -4,6 +4,7 @@ import { IRecipe, RecipeData, Tag } from './interfaces/recipe';
 import Swal from 'sweetalert2';
 import { CategoryService } from '../category/service/category.service';
 import { ICategoryData } from '../category/interfaces/category';
+import { environment } from 'src/app/core/environment/baseUrlImage';
 
 @Component({
   selector: 'app-recipes',
@@ -16,7 +17,7 @@ export class RecipesComponent implements OnInit {
   recipeData!: IRecipe;
   pageSize!: number;
   pageNumber!: number;
-  baseUrl = 'https://upskilling-egypt.com:3006/';
+  baseUrl = environment.baseUrl;
   selectedItemId!: number;
   name: string = '';
   selectedTag = '';

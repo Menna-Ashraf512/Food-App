@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: EditAddRecipesComponent,
-    title: 'Edit Recipe',
+    title: 'View Recipe',
   },
 ];
 

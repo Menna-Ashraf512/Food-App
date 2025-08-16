@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -22,10 +23,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadComponent: () =>
-      import('./core/not-found/not-found.component').then(
-        (m) => m.NotFoundComponent
-      ),
+    component: NotFoundComponent,
+    title: 'Not Found Page',
   },
 ];
 
