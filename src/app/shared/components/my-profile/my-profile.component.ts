@@ -13,10 +13,12 @@ import Swal from 'sweetalert2';
 })
 export class MyProfileComponent implements OnInit {
   userData!: userData;
+  isHide: boolean = false;
   srcImg: any;
   previewImg: string = 'assets/img-profile.jpg';
   files: File[] = [];
   originalImg!: string;
+  role!: boolean;
 
   basUrl = environment.baseUrl;
   constructor(private currentProfileService: CurrentProfileService) {}
@@ -46,6 +48,7 @@ export class MyProfileComponent implements OnInit {
     this.currentProfileService.getCurrentUser().subscribe({
       next: (res) => {
         this.userData = res;
+        this.role = res.group.name;
         this.originalImg = this.basUrl + res.imagePath;
         this.previewImg = this.originalImg;
         this.profileForm.patchValue({

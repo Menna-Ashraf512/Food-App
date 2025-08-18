@@ -26,12 +26,6 @@
         </div>
         <div class="my-3">
             <div class="d-flex justify-content-between align-items-center gap-2 mb-3 mx-auto">
-                <!-- Input -->
-                <div class="input_search">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input [(ngModel)]="searchTerm" (keydown.enter)="applyFilter()" type="text" class="form-control"
-                        placeholder="Search...">
-                </div>
                 <!-- Dropdown -->
                 <mat-form-field class="search" appearance="fill">
                     <mat-label>Search By</mat-label>
@@ -42,6 +36,13 @@
                         <mat-option value="country">Country</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <!-- Input -->
+                <div class="input_search">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input [(ngModel)]="searchTerm" (keydown.enter)="applyFilter()" type="text" class="form-control"
+                        placeholder="Search...">
+                </div>
+
 
             </div>
             <table class="table">

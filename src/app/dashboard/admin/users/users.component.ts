@@ -24,6 +24,7 @@ export class UsersComponent {
   searchBy: string = 'name';
   searchTerm: string = '';
   allUsers: userData[] = [];
+  role!: boolean;
 
   constructor(private usersService: UsersService) {}
   ngOnInit(): void {
@@ -36,7 +37,6 @@ export class UsersComponent {
       .subscribe({
         next: (res) => {
           this.userData = res;
-          console.log(this.userData);
           this.allUsers = res.data.map((users: any) => {
             return {
               ...users,
