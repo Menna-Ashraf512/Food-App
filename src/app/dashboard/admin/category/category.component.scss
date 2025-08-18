@@ -83,21 +83,19 @@ section {
         width: 100%;
         box-sizing: border-box;
         position: relative;
-        margin-bottom: 20px;
 
         input {
             width: 100%;
             background: #FFFFFF;
-            border: 2px solid gray;
+            border: 1px solid #E0E2E7;
             border-radius: 10px;
-            padding: 9px 32px;
+            padding: 14px 32px;
             color: #1F263E;
             font-family: Inter;
             font-weight: 500;
 
             &:focus {
-                box-shadow: 0 0 0 4px rgba(74, 163, 90, 0.4);
-                border-color: var(--secondary-color);
+                box-shadow: none;
 
             }
         }

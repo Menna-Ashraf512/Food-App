@@ -21,28 +21,56 @@ export class UsersComponent {
   pageNumber!: number;
   baseUrl = environment.baseUrl;
   selectedUserId!: number;
-  userName: string = '';
+  searchBy: string = 'name';
+  searchTerm: string = '';
+  allUsers: userData[] = [];
 
   constructor(private usersService: UsersService) {}
   ngOnInit(): void {
     this.getAllUsers();
   }
+
   getAllUsers() {
     this.usersService
-      .getAllUsers(this.pageSize, this.pageNumber, this.userName)
+      .getAllUsers(this.pageSize, this.pageNumber, '')
       .subscribe({
         next: (res) => {
           this.userData = res;
           console.log(this.userData);
-          this.userList = res.data.map((users: any) => {
+          this.allUsers = res.data.map((users: any) => {
             return {
               ...users,
-              imagePath: this.baseUrl + users.imagePath,
+              imagePath: users.imagePath
+                ? this.baseUrl + users.imagePath
+                : 'assets/images/img-profile.jpg',
             };
           });
+          this.userList = [...this.allUsers];
         },
       });
   }
+
+  applyFilter() {
+    const value = this.searchTerm.toLowerCase();
+
+    this.userList = this.allUsers.filter((user: any) => {
+      if (this.searchBy === 'name') {
+        return user.userName?.toLowerCase().includes(value);
+      } else if (this.searchBy === 'email') {
+        return user.email?.toLowerCase().includes(value);
+      } else if (this.searchBy === 'country') {
+        return user.country?.toLowerCase().includes(value);
+      } else if (this.searchBy === 'all') {
+        return (
+          user.userName?.toLowerCase().includes(value) ||
+          user.email?.toLowerCase().includes(value) ||
+          user.country?.toLowerCase().includes(value)
+        );
+      }
+      return true;
+    });
+  }
+
   viewUser(id: number) {
     this.usersService.getUserById(id).subscribe({
       next: (res) => {

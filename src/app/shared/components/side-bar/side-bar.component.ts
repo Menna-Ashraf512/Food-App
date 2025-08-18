@@ -18,10 +18,10 @@ export class SideBarComponent {
   constructor(private router: Router) {}
 
   // --------------------------------------------------------//
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['/auth']);
-  }
+  // logout() {
+  //   localStorage.clear();
+  //   this.router.navigate(['/auth']);
+  // }
 
   isAdmin(): boolean {
     return localStorage.getItem('role') === 'SuperAdmin' ? true : false;
@@ -40,7 +40,7 @@ export class SideBarComponent {
     {
       title: 'Users',
       icon: 'fa-users',
-      menuLink: '/dashboard/admin/users',
+      menuLink: '/dashboard/admin/users/userList',
       isActive: this.isAdmin(),
     },
     {

@@ -26,7 +26,7 @@ export class AuthService {
     localStorage.setItem('role', decoded.userGroup);
     console.log(decoded.userGroup);
   }
-  getProfileImage(): Observable<any> {
+  getProfileData(): Observable<any> {
     return this.httpClient.get(`Users/currentUser`);
   }
   register(data: any): Observable<any> {

@@ -7,6 +7,7 @@ import { NotFoundComponent } from '../core/not-found/not-found.component';
 import { HomeComponent } from '../shared/components/home/home.component';
 import { adminGuard } from '../core/guards/admin.guard';
 import { userGuard } from '../core/guards/user.guard';
+import { MyProfileComponent } from '../shared/components/my-profile/my-profile.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, title: 'Home page' },
+      { path: 'profile', component: MyProfileComponent, title: 'my Profile' },
       {
         path: 'user',
         canActivate: [userGuard],

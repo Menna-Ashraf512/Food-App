@@ -17,14 +17,19 @@
                 </div>
             </div>
         </div>
+        <div>
+            <h2>
+                {{ mode ? 'View' : (recipeId ? 'Edit' : 'Add New') }} Recipe
+            </h2>
+        </div>
         <div class="row">
             <div class="col-md-10 mx-auto mb-5">
-                <form class="example-form" [formGroup]="recipeForm" (ngSubmit)="addNewRecipe(recipeForm)">
+                <form class="example-form" [formGroup]="recipeForm" (ngSubmit)="saveRecipe()">
                     <div class="d-flex flex-column my-5 pb-5 border-bottom">
                         <mat-form-field class="example-full-width">
-                            <input formControlName="name" matInput placeholder="Ex. Pizza" value="Recipe Name">
+                            <input formControlName="name" matInput placeholder="Recipe Name">
                         </mat-form-field>
-                        <mat-form-field>
+                        <mat-form-field hideRequiredMarker>
                             <mat-label>Tag</mat-label>
                             <mat-select formControlName="tagId">
                                 <mat-option *ngFor="let tag of tagsList " [value]="tag.id">{{tag.name}}</mat-option>
@@ -33,14 +38,14 @@
                         <mat-form-field class="example-full-width">
                             <input formControlName="price" type="number" matInput placeholder="Recipe Price">
                         </mat-form-field>
-                        <mat-form-field>
+                        <mat-form-field hideRequiredMarker>
                             <mat-label>Category</mat-label>
                             <mat-select formControlName="categoriesIds" multiple>
                                 <mat-option *ngFor="let cat of categoryList " [value]="cat.id">{{cat.name}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width">
-                            <mat-label>Description *</mat-label>
+                            <mat-label>Description</mat-label>
                             <textarea formControlName="description" matInput
                                 placeholder="Ex. It makes me feel..."></textarea>
                         </mat-form-field>
@@ -56,7 +61,8 @@
                         </ngx-dropzone>
                     </div>
                     <div class="d-flex justify-content-end align-items-center gap-4">
-                        <button type="button" routerLink="/dashboard/admin/recipes" class=" btn_outline">Close</button>
+                        <button type="button" routerLink="/dashboard/admin/recipes"
+                            class=" btn_outline_green">Close</button>
                         <button *ngIf="!mode" class=" btn_green">{{recipeId?'Update':'Save'}}</button>
                     </div>
                 </form>

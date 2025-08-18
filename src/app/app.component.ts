@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',

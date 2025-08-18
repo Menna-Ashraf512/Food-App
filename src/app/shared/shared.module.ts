@@ -13,6 +13,7 @@ import { ChangePassComponent } from './components/change-pass/change-pass.compon
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -20,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     DeleteItemComponent,
     ChangePassComponent,
+    MyProfileComponent,
   ],
   imports: [
     CommonModule,

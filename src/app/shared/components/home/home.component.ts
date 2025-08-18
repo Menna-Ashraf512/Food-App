@@ -14,7 +14,7 @@ export class HomeComponent {
   }
 
   getImage() {
-    this.authService.getProfileImage().subscribe({
+    this.authService.getProfileData().subscribe({
       next: (res) => {
         this.userName = res.userName;
       },

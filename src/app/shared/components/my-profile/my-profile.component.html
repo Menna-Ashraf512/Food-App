@@ -1,0 +1,77 @@
+<section class="profile-section py-5">
+    <div class="container">
+        <div class="card shadow-lg rounded-4 border-0 p-4">
+            <div class="d-flex flex-column align-items-center position-relative">
+                <div class="profile-image-wrapper mb-3">
+                    <img [src]="previewImg || 'assets/images/img-profile.jpg'" alt="Profile Image"
+                        class="rounded-circle border profile-img shadow-sm">
+                    <button (click)="onRemove()" class="btn btn-sm btn-light shadow delete-btn">
+                        <i class="fa fa-x text-danger"></i>
+                    </button>
+                    <ngx-dropzone (change)="onSelect($event)" class="upload-btn shadow-sm">
+                        <ngx-dropzone-label>
+                            <i class="fa fa-camera text-white"></i>
+                        </ngx-dropzone-label>
+                    </ngx-dropzone>
+                </div>
+                <h5 class="fw-bold mt-2">{{ profileForm.value.userName || 'User Name' }}</h5>
+                <p class="text-muted mb-0">{{ userData.group.name||'Role' }}</p>
+            </div>
+
+            <form [formGroup]="profileForm" (ngSubmit)="editProfile(profileForm)" class="mt-4">
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+                        <label class="form-label">User Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input formControlName="userName" type="text" class="form-control"
+                                placeholder="Enter your userName">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input formControlName="email" type="email" class="form-control"
+                                placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Country</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-globe"></i></span>
+                            <input formControlName="country" type="text" class="form-control"
+                                placeholder="Enter your country">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Phone Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input formControlName="phoneNumber" type="text" class="form-control"
+                                placeholder="Enter your phoneNumber">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input formControlName="confirmPassword" type="password" class="form-control"
+                                placeholder="Enter confirmPassword">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-end mt-4">
+                    <button class="btn btn-success px-4 py-2 rounded-pill shadow">Save Changes</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>

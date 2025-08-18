@@ -4,6 +4,14 @@ section {
     border-radius: 16px;
     background: #F8F9FB;
 
+    ul {
+        li {
+            a {
+                cursor: pointer;
+            }
+        }
+    }
+
     .input_search {
         width: 100%;
         box-sizing: border-box;

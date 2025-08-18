@@ -60,3 +60,12 @@ section {
         }
     }
 }
+
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    background-color: #fff !important;
+    color: #000 !important;
+    opacity: 1 !important;
+}

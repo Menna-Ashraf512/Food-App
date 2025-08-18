@@ -35,57 +35,54 @@
                 <input [(ngModel)]="name" (keydown.enter)="getAllCategory()" type="text" class="form-control"
                     placeholder="Search By Name....">
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Creation Date</th>
-                        <th scope="col">modification Date</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody *ngIf="listCategory.length > 0; else noData">
-                    <tr *ngFor="let item of listCategory">
-                        <td>{{item.name}}</td>
-                        <td>{{item.creationDate | date:'dd-MM-yyyy'}}</td>
-                        <td>{{item.modificationDate | date:'dd-MM-yyyy'}}</td>
-                        <td>
-                            <button class="btn border-0" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="fa-solid fa-ellipsis"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                        data-bs-target="#viewItem"
-                                        class="dropdown-item d-flex  align-items-center gap-2">
-                                        <i class="fa-regular second_color fa-eye"></i>
-                                        View
-                                    </a>
-                                </li>
-                                <li>
-                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                        data-bs-target="#AddNewItem"
-                                        class="dropdown-item d-flex  align-items-center gap-2">
-                                        <i class="fa-regular second_color fa-pen-to-square"></i>
-                                        Edit
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                        data-bs-target="#deleteItem"
-                                        class="dropdown-item d-flex  align-items-center gap-2">
-                                        <i class="fa-regular second_color fa-trash-can"></i>
-
-                                        Delete
-                                    </a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Creation Date</th>
+                    <th scope="col">modification Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="listCategory.length > 0; else noData">
+                <tr *ngFor="let item of listCategory">
+                    <td>{{item.name}}</td>
+                    <td>{{item.creationDate | date:'dd-MM-yyyy'}}</td>
+                    <td>{{item.modificationDate | date:'dd-MM-yyyy'}}</td>
+                    <td>
+                        <button class="btn border-0" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                class="fa-solid fa-ellipsis"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal" data-bs-target="#viewItem"
+                                    class="dropdown-item d-flex  align-items-center gap-2">
+                                    <i class="fa-regular second_color fa-eye"></i>
+                                    View
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
+                                    data-bs-target="#AddNewItem" class="dropdown-item d-flex  align-items-center gap-2">
+                                    <i class="fa-regular second_color fa-pen-to-square"></i>
+                                    Edit
+                                </a>
+                            </li>
+
+                            <li>
+                                <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
+                                    data-bs-target="#deleteItem" class="dropdown-item d-flex  align-items-center gap-2">
+                                    <i class="fa-regular second_color fa-trash-can"></i>
+
+                                    Delete
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <ng-template #noData>
             <tr>
                 <td colspan="4">

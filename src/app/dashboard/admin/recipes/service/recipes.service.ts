@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { environment } from 'src/app/core/environment/baseUrlImage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipesService {
+  baseUrl = environment.baseUrl;
+
   constructor(private httpClient: HttpClient) {}
   addRecipe(data: any): Observable<any> {
     return this.httpClient.post(`Recipe`, data);
@@ -34,5 +37,10 @@ export class RecipesService {
   }
   updateRecipe(data: any, id: number): Observable<any> {
     return this.httpClient.put(`Recipe/${id}`, data);
+  }
+  urlToFile(url: string, filename: string): Observable<File> {
+    return this.httpClient
+      .get(this.baseUrl + url, { responseType: 'blob' })
+      .pipe(map((blob) => new File([blob], filename, { type: blob.type })));
   }
 }

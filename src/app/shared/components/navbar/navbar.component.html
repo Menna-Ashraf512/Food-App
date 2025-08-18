@@ -18,9 +18,10 @@
 
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" routerLink="/dashboard/profile">My Profile</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changePassword">change
+                                Password</a></li>
+                        <li><a class="dropdown-item" (click)="logout()">LogOut </a></li>
                     </ul>
                 </div>
                 <div>
@@ -34,3 +35,5 @@
         </div>
     </div>
 </section>
+
+<app-change-pass></app-change-pass>

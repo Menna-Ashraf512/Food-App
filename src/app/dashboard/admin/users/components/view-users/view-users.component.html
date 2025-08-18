@@ -1,46 +1,54 @@
 <div class="modal fade" id="viewItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="viewItemLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content p-4 rounded-4 shadow-lg border-0">
             <div class="d-flex  justify-content-between">
-                <h2>View Details</h2>
+                <h2>Details</h2>
                 <button type="button" class="btn btn_close ms-auto" data-bs-dismiss="modal" aria-label="Close"><i
                         class="fa-solid fa-xmark text-danger"></i></button>
             </div>
             <div>
                 <form class="d-flex flex-column mt-3 gap-4">
-
                     <div class="text-center">
-                        <img [src]="imgUer" class="img-fluid imageProfile" [alt]="userData?.userName">
-
+                        <img [src]="imgUser" class="img-fluid imageProfile" [alt]="userData?.userName || 'User'">
                     </div>
-                    <div>
-                        <label for="name">Name</label>
-                        <input disabled type="text" [value]="userData?.userName" class="form-control">
-                    </div>
-
-                    <div>
-                        <label for="name">Email</label>
-                        <input disabled type="text" [value]="userData?.email" class="form-control">
-                    </div>
-
-                    <div>
-                        <label for="name">phoneNumber</label>
-                        <input disabled type="text" [value]="userData?.phoneNumber" class="form-control">
-                    </div>
-                    <div>
-                        <label for="id">Country</label>
-                        <input disabled type="text" [value]="userData?.country" class="form-control">
-                    </div>
-                    <div>
-                        <label for="modificationDate">Modification Date</label>
-                        <input disabled [value]="userData?.modificationDate| date:'dd/MM/yyyy HH:mm'" type="text"
-                            class="form-control">
-                    </div>
-                    <div>
-                        <label class="form-label" for="creationDate">Creation Date</label>
-                        <input disabled [value]="userData?.creationDate| date:'dd/MM/yyyy HH:mm'" type="text"
-                            class="form-control">
+                    <div class="row flex-wrap">
+                        <div class="col-lg-6">
+                            <div>
+                                <label for="name">Name</label>
+                                <p class="form-control">{{ userData?.userName }}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <label for="email">Email</label>
+                                <p class="form-control">{{ userData?.email }}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <label for="name">phoneNumber</label>
+                                <p class="form-control">{{ userData?.phoneNumber }}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <label for="id">Country</label>
+                                <p class="form-control">{{ userData?.country }}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <label for="modificationDate">Modification Date</label>
+                                <p class="form-control">{{ userData?.modificationDate }}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <label class="form-label" for="creationDate">Creation Date</label>
+                                <p class="form-control">{{ userData?.creationDate }}</p>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

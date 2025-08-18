@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
 
 @Component({
@@ -11,17 +12,22 @@ export class NavbarComponent implements OnInit {
   userName: string = '';
   baseUrl = 'https://upskilling-egypt.com:3006/';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   ngOnInit(): void {
     this.getImage();
   }
 
   getImage() {
-    this.authService.getProfileImage().subscribe({
+    this.authService.getProfileData().subscribe({
       next: (res) => {
         this.imgProfile = this.baseUrl + res.imagePath;
         this.userName = res.userName;
       },
     });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/auth']);
   }
 }

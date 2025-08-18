@@ -9,6 +9,7 @@ import {
 } from '../../../category/interfaces/category';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/app/core/environment/baseUrlImage';
 
 @Component({
   selector: 'app-edit-add-recipes',
@@ -18,11 +19,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditAddRecipesComponent implements OnInit {
   files: File[] = [];
   srcImg: any;
+  selectedFile?: File;
   recipeId!: number;
   tagsList: Tag[] = [];
   categoryList: ICategoryData[] = [];
   recipeData!: RecipeData;
-  mode = this.activatedRoute.snapshot.url.some((seg) => seg.path === 'view');
+  baseUrl = environment.baseUrl;
+  mode = this.activatedRoute.snapshot.url.some((x) => x.path === 'view');
   recipeForm = new FormGroup({
     name: new FormControl<string | null>(null, Validators.required),
     description: new FormControl<string | null>(null, Validators.required),
@@ -52,98 +55,62 @@ export class EditAddRecipesComponent implements OnInit {
   }
   // -----------------------------------------------------------------------//
 
-  addNewRecipe(data: FormGroup) {
+  urlToFile(url: string, filename: string): Promise<File> {
+    return fetch(this.baseUrl + url)
+      .then((res) => res.blob())
+      .then((blob) => new File([blob], filename, { type: blob.type }));
+  }
+
+  saveRecipe() {
     let recipeData = new FormData();
     let formValues: any = this.recipeForm.getRawValue();
 
     for (let key in formValues) {
       recipeData.append(key, String(formValues[key]));
     }
-    if (this.srcImg) {
-      recipeData.append('recipeImage', this.srcImg);
-    }
-    // console.log(data.value);
-    if (this.recipeId) {
-      this.recipesService.updateRecipe(recipeData, this.recipeId).subscribe({
-        next: (res) => {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            },
-          });
-          Toast.fire({
-            icon: 'success',
-            title: res.message,
-          });
-        },
-        error: (err) => {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            },
-          });
-          Toast.fire({
-            icon: 'error',
-            title: err.message,
-          });
-        },
-        complete: () => {
-          this.router.navigate(['/dashboard/admin/recipes']);
-        },
+
+    if (this.selectedFile) {
+      recipeData.append('recipeImage', this.selectedFile);
+      this.submitRecipe(recipeData);
+    } else if (this.recipeId && this.recipeData?.imagePath) {
+      this.urlToFile(this.recipeData.imagePath, 'oldImage.jpg').then((file) => {
+        recipeData.append('recipeImage', file);
+        this.submitRecipe(recipeData);
       });
     } else {
-      this.recipesService.addRecipe(recipeData).subscribe({
-        next: (res) => {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            },
-          });
-          Toast.fire({
-            icon: 'success',
-            title: res.message,
-          });
-        },
-        error: (err) => {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            },
-          });
-          Toast.fire({
-            icon: 'error',
-            title: err.message,
-          });
-        },
-        complete: () => {
-          this.router.navigate(['/dashboard/admin/recipes']);
-        },
-      });
+      this.submitRecipe(recipeData);
     }
+  }
+
+  submitRecipe(formData: FormData) {
+    const request$ = this.recipeId
+      ? this.recipesService.updateRecipe(formData, this.recipeId)
+      : this.recipesService.addRecipe(formData);
+
+    request$.subscribe({
+      next: (res) => {
+        console.log(res);
+        Swal.fire({
+          icon: 'success',
+          title: 'Update recipe successfully',
+          toast: true,
+          position: 'top-end',
+          timer: 1000,
+          showConfirmButton: false,
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.err.message,
+          toast: true,
+          position: 'top-end',
+          timer: 1000,
+          showConfirmButton: false,
+        });
+      },
+      complete: () => this.router.navigate(['/dashboard/admin/recipes']),
+    });
   }
 
   getRecipeById(id: number) {
@@ -155,8 +122,11 @@ export class EditAddRecipesComponent implements OnInit {
         console.log(err);
       },
       complete: () => {
-        this.srcImg =
-          'https://upskilling-egypt.com:3006/' + this.recipeData.imagePath;
+        if (this.recipeData?.imagePath) {
+          this.srcImg = this.baseUrl + this.recipeData.imagePath;
+        } else {
+          this.srcImg = 'assets/images/img-recipe.jpg';
+        }
         this.recipeForm.patchValue({
           name: this.recipeData.name,
           price: this.recipeData.price,
@@ -196,8 +166,9 @@ export class EditAddRecipesComponent implements OnInit {
     const selectedFile = event.addedFiles[0];
     if (selectedFile) {
       this.files = [selectedFile];
+      this.selectedFile = selectedFile;
+      this.srcImg = URL.createObjectURL(selectedFile);
     }
-    this.srcImg = this.files[0];
   }
 
   onRemove(event: any) {

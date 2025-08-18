@@ -43,7 +43,9 @@ export class RecipesComponent implements OnInit {
           this.allRecipe = res.data.map((recipe: any) => {
             return {
               ...recipe,
-              imagePath: this.baseUrl + recipe.imagePath,
+              imagePath: recipe.imagePath
+                ? this.baseUrl + recipe.imagePath
+                : 'assets/images/img-recipe.jpg',
             };
           });
           this.listRecipe = [...this.allRecipe];

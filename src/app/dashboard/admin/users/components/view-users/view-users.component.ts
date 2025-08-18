@@ -1,6 +1,11 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { UsersService } from '../../service/users.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { userData } from '../../interface/users';
 import { environment } from 'src/app/core/environment/baseUrlImage';
 
@@ -9,10 +14,10 @@ import { environment } from 'src/app/core/environment/baseUrlImage';
   templateUrl: './view-users.component.html',
   styleUrls: ['./view-users.component.scss'],
 })
-export class ViewUsersComponent {
+export class ViewUsersComponent implements OnChanges {
   @Input() userId!: number;
   userData: userData | null = null;
-  imgUer: string = '';
+  imgUser: string = '';
   baseUrl = environment.baseUrl;
   constructor(private usersService: UsersService) {}
 
@@ -26,7 +31,12 @@ export class ViewUsersComponent {
     this.usersService.getUserById(id).subscribe({
       next: (res) => {
         this.userData = res;
-        this.imgUer = this.baseUrl + this.userData?.imagePath;
+
+        if (this.userData?.imagePath) {
+          this.imgUser = this.baseUrl + this.userData.imagePath;
+        } else {
+          this.imgUser = 'assets/images/img-profile.jpg';
+        }
       },
       error: (err) => {
         console.error(err);
