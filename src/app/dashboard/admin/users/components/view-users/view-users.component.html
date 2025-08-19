@@ -1,56 +1,70 @@
 <div class="modal fade" id="viewItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="viewItemLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content p-4 rounded-4 shadow-lg border-0">
-            <div class="d-flex  justify-content-between">
-                <h2>Details</h2>
-                <button type="button" class="btn btn_close ms-auto" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="fa-solid fa-xmark text-danger"></i></button>
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content py-3 px-4 rounded-4 shadow-lg border-0">
+            <button type="button" class="btn btn_close ms-auto" data-bs-dismiss="modal" aria-label="Close"><i
+                    class="fa-solid fa-xmark text-danger"></i></button>
+
+
+            <div class="user-card row">
+                <div class="col-md-4">
+                    <div class="avatar-wrap">
+                        <img class="avatar" [src]="imgUser || 'assets/images/img-profile.jpg'" alt="user avatar" />
+                        <h3 class="username">{{ userData?.userName }}</h3>
+                        <p class="user-country">{{
+                            userData?.group?.name==='SuperAdmin'?'Admin':'User' }}</p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="info-grid">
+
+                        <div class="info_item">
+                            <div>
+                                <i class="fa-solid fa-phone icon"></i>
+                                <span class="label">Phone</span>
+                                <p class="value">{{ userData?.phoneNumber }}</p>
+                            </div>
+                        </div>
+                        <div class="info_item">
+                            <div>
+                                <i class="fa-solid fa-envelope icon"></i>
+                                <span class="label">Email</span>
+                                <p class="value">{{ userData?.email }}</p>
+                            </div>
+                        </div>
+                        <div class="info_item">
+                            <div>
+                                <i class="fa-solid fa-flag icon"></i>
+                                <span class="label">Country</span>
+                                <p class="value">{{ userData?.country }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <form class="d-flex flex-column mt-3 gap-4">
-                    <div class="text-center">
-                        <img [src]="imgUser" class="img-fluid imageProfile" [alt]="userData?.userName || 'User'">
-                    </div>
-                    <div class="row flex-wrap">
-                        <div class="col-lg-6">
-                            <div>
-                                <label for="name">Name</label>
-                                <p class="form-control">{{ userData?.userName }}</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <label for="email">Email</label>
-                                <p class="form-control">{{ userData?.email }}</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <label for="name">phoneNumber</label>
-                                <p class="form-control">{{ userData?.phoneNumber }}</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <label for="id">Country</label>
-                                <p class="form-control">{{ userData?.country }}</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <label for="modificationDate">Modification Date</label>
-                                <p class="form-control">{{ userData?.modificationDate }}</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <label class="form-label" for="creationDate">Creation Date</label>
-                                <p class="form-control">{{ userData?.creationDate }}</p>
-                            </div>
+
+
+
+            <div class="timeline">
+                <div class="tick">
+                    <div class="dot1"></div>
+                    <div class="content">
+                        <div class="t-label">Creation Date</div>
+                        <div class="t-value">
+                            {{ userData?.creationDate| date: 'MMM d, y – hh:mm a' }}
                         </div>
                     </div>
-                </form>
+                </div>
+                <div class="line"></div>
+                <div class="tick">
+                    <div class="dot2"></div>
+                    <div class="content">
+                        <div class="t-label">Modification Date</div>
+                        <div class="t-value">
+                            {{ userData?.modificationDate| date: 'MMM d, y – hh:mm a' }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

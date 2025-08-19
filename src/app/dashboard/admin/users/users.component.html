@@ -29,17 +29,26 @@
                 <!-- Dropdown -->
                 <mat-form-field class="search" appearance="fill">
                     <mat-label>Search By</mat-label>
-                    <mat-select [(value)]="searchBy" (selectionChange)="applyFilter()">
+                    <mat-select [(ngModel)]="searchKey" (selectionChange)="getAllUsers()">
                         <mat-option value="all">All</mat-option>
-                        <mat-option value="name">User Name</mat-option>
+                        <mat-option value="userName">User Name</mat-option>
                         <mat-option value="email">Email</mat-option>
                         <mat-option value="country">Country</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!-- Dropdown -->
+                <mat-form-field class="search" appearance="fill">
+                    <mat-label>Role</mat-label>
+                    <mat-select [(ngModel)]="role" (selectionChange)="getAllUsers()">
+                        <mat-option value="1">Admin</mat-option>
+                        <mat-option value="2">User</mat-option>
+                        <mat-option [value]="[1,2]">All</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <!-- Input -->
                 <div class="input_search">
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input [(ngModel)]="searchTerm" (keydown.enter)="applyFilter()" type="text" class="form-control"
+                    <input [(ngModel)]="searchName" (keydown.enter)="getAllUsers()" type="text" class="form-control"
                         placeholder="Search...">
                 </div>
 
@@ -60,11 +69,12 @@
                     <tr *ngFor="let item of userList">
                         <td>{{item.userName}}</td>
                         <td>
-                            <img class="recipe_img" [src]="item.imagePath" [alt]="item.userName">
+                            <img class="recipe_img" [src]="item.imagePath || 'assets/images/img-profile.jpg'"
+                                [alt]="item.userName">
                         </td>
                         <td>{{item.email}}</td>
                         <td>{{item.country}}</td>
-                        <td>{{item.group.name}}</td>
+                        <td>{{ item.group.name === 'SuperAdmin' ? 'Admin' : 'User' }}</td>
                         <td>
                             <button class="btn border-0" data-bs-toggle="dropdown" aria-expanded="false"><i
                                     class="fa-solid fa-ellipsis"></i>

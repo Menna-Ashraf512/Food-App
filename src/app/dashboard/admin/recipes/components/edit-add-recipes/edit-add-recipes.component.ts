@@ -7,7 +7,7 @@ import {
   ICategory,
   ICategoryData,
 } from '../../../category/interfaces/category';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/app/core/environment/baseUrlImage';
 

@@ -1,9 +1,143 @@
-.imageProfile {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 50%;
-    border: 1px solid var(--primary-color);
-    box-shadow: -1px 6px 20px 0px var(--primary-color);
+.user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    .avatar-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            margin-bottom: 12px;
+        }
+
+        .username {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            color: #1f263e;
+        }
+
+        .user-country {
+            font-size: 14px;
+            color: #666;
+
+            .icon {
+                color: var(--primary-color);
+                margin-top: 2px;
+            }
+        }
+    }
+
+    .info-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 20px;
+
+        .info_item {
+            display: flex;
+            padding: 10px;
+            border-radius: 12px;
+            background: #f9fafb;
+
+            .icon {
+                font-size: 18px;
+                color: var(--primary-color);
+                margin-top: 2px;
+                padding-right: 5px;
+            }
+
+            .label {
+                font-size: 13px;
+                color: #777;
+            }
+
+            .value {
+                font-size: 15px;
+                font-weight: 600;
+                margin: 0;
+                color: #111;
+            }
+        }
+    }
+}
+
+
+/* Timeline */
+.timeline {
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 2px dashed rgba(0, 0, 0, .08);
+    display: grid;
+    gap: 20px;
+    max-width: 640px;
+
+    .tick {
+        display: grid;
+        grid-template-columns: 16px 1fr;
+        align-items: start;
+        gap: 12px;
+        position: relative;
+
+        .dot1 {
+            width: 12px;
+            height: 12px;
+            background: #111;
+            border-radius: 50%;
+            margin-top: 6px;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: calc(100% + 20px);
+                background: rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        .dot2 {
+            width: 12px;
+            height: 12px;
+            background: #111;
+            border-radius: 50%;
+            margin-top: 6px;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: calc(100% + 30px);
+                background: rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        .content {
+            .t-label {
+                font-weight: 700;
+                margin-bottom: 2px;
+                font-size: 14px;
+            }
+
+            .t-value {
+                opacity: .9;
+                font-size: 15px;
+            }
+        }
+    }
 }

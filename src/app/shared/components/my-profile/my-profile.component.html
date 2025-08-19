@@ -14,8 +14,7 @@
                         </ngx-dropzone-label>
                     </ngx-dropzone>
                 </div>
-                <!-- <h5 class="fw-bold mt-2">{{ profileForm.value.userName || 'User Name' }}</h5>-->
-                <p class="text-muted mb-0">{{ userData.group.name||'Role' }}</p>
+                <p class="role-badge" [class]="role ==='Admin'?'admin':'user'">{{ role }}</p>
             </div>
 
             <form [formGroup]="profileForm" (ngSubmit)="editProfile(profileForm)" class="mt-4">
@@ -70,7 +69,7 @@
 
                 </div>
                 <div class="text-end mt-4">
-                    <button class="btn btn-success px-4 py-2 rounded-pill shadow">Save Changes</button>
+                    <button class="btn btn_green px-4 py-2 rounded-pill shadow">Save Changes</button>
                 </div>
             </form>
 

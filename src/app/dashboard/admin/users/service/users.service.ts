@@ -7,18 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
   constructor(private httpClient: HttpClient) {}
-  getAllUsers(
-    pageSize: number,
-    pageNumber: number,
-    userName: string
-  ): Observable<any> {
-    return this.httpClient.get(`Users`, {
-      params: {
-        pageSize,
-        pageNumber,
-        userName,
-      },
-    });
+  getAllUsers(paramData: any): Observable<any> {
+    return this.httpClient.get(`Users`, { params: paramData });
   }
   deleteUsers(id: number): Observable<any> {
     return this.httpClient.delete(`Users/${id}`);

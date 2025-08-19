@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from './service/category.service';
 import { ICategory, ICategoryData } from './interfaces/category';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',

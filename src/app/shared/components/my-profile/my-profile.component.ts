@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/core/auth/services/auth.service';
 import { environment } from 'src/app/core/environment/baseUrlImage';
 import { CurrentProfileService } from 'src/app/core/service/current-profile.service';
 import { userData } from 'src/app/dashboard/admin/users/interface/users';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-my-profile',
@@ -18,7 +18,7 @@ export class MyProfileComponent implements OnInit {
   previewImg: string = 'assets/img-profile.jpg';
   files: File[] = [];
   originalImg!: string;
-  role!: boolean;
+  role!: any;
 
   basUrl = environment.baseUrl;
   constructor(private currentProfileService: CurrentProfileService) {}
@@ -48,7 +48,12 @@ export class MyProfileComponent implements OnInit {
     this.currentProfileService.getCurrentUser().subscribe({
       next: (res) => {
         this.userData = res;
-        this.role = res.group.name;
+        this.role = this.userData.group.name;
+        if (this.role === 'SuperAdmin') {
+          this.role = 'Admin';
+        } else {
+          this.role = 'User';
+        }
         this.originalImg = this.basUrl + res.imagePath;
         this.previewImg = this.originalImg;
         this.profileForm.patchValue({

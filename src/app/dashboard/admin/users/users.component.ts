@@ -1,10 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-// import { RecipesService } from '../recipes/service/';
-import { IRecipe, RecipeData, Tag } from '../recipes/interfaces/recipe';
-import Swal from 'sweetalert2';
-import { CategoryService } from '../category/service/category.service';
-import { ICategoryData } from '../category/interfaces/category';
-import { RecipesService } from '../recipes/service/recipes.service';
+import { Component } from '@angular/core';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { environment } from 'src/app/core/environment/baseUrlImage';
 import { UsersService } from './service/users.service';
 import { userData, Users } from './interface/users';
@@ -17,14 +12,14 @@ import { userData, Users } from './interface/users';
 export class UsersComponent {
   userData!: Users;
   userList: userData[] = [];
-  pageSize!: number;
-  pageNumber!: number;
+  pageSize: number = 5;
+  pageNumber: number = 1;
   baseUrl = environment.baseUrl;
   selectedUserId!: number;
-  searchBy: string = 'name';
-  searchTerm: string = '';
-  allUsers: userData[] = [];
-  role!: boolean;
+  searchKey: string = 'userName';
+  searchName: string = '';
+
+  role: string = '';
 
   constructor(private usersService: UsersService) {}
   ngOnInit(): void {
@@ -32,49 +27,17 @@ export class UsersComponent {
   }
 
   getAllUsers() {
-    this.usersService
-      .getAllUsers(this.pageSize, this.pageNumber, '')
-      .subscribe({
-        next: (res) => {
-          this.userData = res;
-          this.allUsers = res.data.map((users: any) => {
-            return {
-              ...users,
-              imagePath: users.imagePath
-                ? this.baseUrl + users.imagePath
-                : 'assets/images/img-profile.jpg',
-            };
-          });
-          this.userList = [...this.allUsers];
-        },
-      });
-  }
-
-  applyFilter() {
-    const value = this.searchTerm.toLowerCase();
-
-    this.userList = this.allUsers.filter((user: any) => {
-      if (this.searchBy === 'name') {
-        return user.userName?.toLowerCase().includes(value);
-      } else if (this.searchBy === 'email') {
-        return user.email?.toLowerCase().includes(value);
-      } else if (this.searchBy === 'country') {
-        return user.country?.toLowerCase().includes(value);
-      } else if (this.searchBy === 'all') {
-        return (
-          user.userName?.toLowerCase().includes(value) ||
-          user.email?.toLowerCase().includes(value) ||
-          user.country?.toLowerCase().includes(value)
-        );
-      }
-      return true;
-    });
-  }
-
-  viewUser(id: number) {
-    this.usersService.getUserById(id).subscribe({
+    let usersParam = {
+      pageNumber: this.pageNumber,
+      pageSize: this.pageSize,
+      [this.searchKey]: this.searchName,
+      groups: this.role,
+    };
+    this.usersService.getAllUsers(usersParam).subscribe({
       next: (res) => {
         this.userData = res;
+        this.userList = res.data;
+        console.log(this.userList);
       },
     });
   }

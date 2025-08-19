@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipesService } from './service/recipes.service';
 import { IRecipe, RecipeData, Tag } from './interfaces/recipe';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { CategoryService } from '../category/service/category.service';
 import { ICategoryData } from '../category/interfaces/category';
 import { environment } from 'src/app/core/environment/baseUrlImage';
