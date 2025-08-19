@@ -31,11 +31,6 @@
         </div>
         <div class="my-3">
             <div class="d-flex flex-column flex-lg-row justify-content-center gap-2 align-items-center  mx-auto">
-                <div class="input_search">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input [(ngModel)]="name" (keydown.enter)="getAllRecipes()" type="text" class="form-control"
-                        placeholder="Search By Name....">
-                </div>
                 <div class="d-flex gap-2">
                     <mat-form-field class="tag">
                         <mat-label>Tag</mat-label>
@@ -52,6 +47,12 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div class="input_search">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input [(ngModel)]="name" (keydown.enter)="getAllRecipes()" type="text" class="form-control"
+                        placeholder="Search By Name....">
+                </div>
+
             </div>
             <table class="table">
                 <thead>
