@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/auth/services/auth.service';
 import { environment } from 'src/app/core/environment/baseUrlImage';
 import { CurrentProfileService } from 'src/app/core/service/current-profile.service';
 import { userData } from 'src/app/dashboard/admin/users/interface/users';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-profile',
@@ -48,6 +47,7 @@ export class MyProfileComponent implements OnInit {
     this.currentProfileService.getCurrentUser().subscribe({
       next: (res) => {
         this.userData = res;
+
         this.role = this.userData.group.name;
         if (this.role === 'SuperAdmin') {
           this.role = 'Admin';
