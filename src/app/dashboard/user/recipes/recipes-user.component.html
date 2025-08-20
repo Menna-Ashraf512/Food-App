@@ -1,36 +1,7 @@
 <section>
     <div class="container-fluid">
-        <div class="content_welcome">
-            <div class="container-fluid px-5">
-                <div class="row">
-                    <div class="col-md-10 title ">
-                        <div class="header">
-                            <h2>Recipes</h2>
-                            <span>Items</span>
-                        </div>
-                        <p>
-                            You can now add your items that any user can order it from the Application and you can edit
-                        </p>
-                    </div>
-                    <div class="col-md-2 img_welcome text-center">
-                        <img src="../../../../assets/images/vector-category.svg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center  my-4 px-2">
-            <div class="categories_header">
-                <h3 class="m-0">Recipe Table Details</h3>
-                <p class="">You can check all details</p>
-            </div>
-            <div>
-                <button routerLink="add" data-bs-toggle="modal" data-bs-target="#AddNewItem"
-                    class="btn_green px-3 me-auto">Add New
-                    Item</button>
-            </div>
-        </div>
         <div class="my-3">
-            <div class="d-flex flex-column flex-lg-row justify-content-center gap-2 align-items-center  mx-auto">
+            <div class="d-flex flex-column flex-lg-row justify-content-center gap-2 align-items-center mb-2  mx-auto">
                 <div class="d-flex gap-2">
                     <mat-form-field class="tag">
                         <mat-label>Tag</mat-label>
@@ -54,7 +25,7 @@
                 </div>
 
             </div>
-            <table class="table">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -86,26 +57,10 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a [routerLink]="['view', item.id]"
-                                        class="dropdown-item d-flex  align-items-center gap-2">
+                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
+                                        data-bs-target="#AddFav" class="dropdown-item d-flex  align-items-center gap-2">
                                         <i class="fa-regular second_color fa-eye"></i>
                                         View
-                                    </a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="['edit', item.id]"
-                                        class="dropdown-item d-flex  align-items-center gap-2">
-                                        <i class="fa-regular second_color fa-pen-to-square"></i>
-                                        Edit
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                        data-bs-target="#deleteItem"
-                                        class="dropdown-item d-flex  align-items-center gap-2">
-                                        <i class="fa-regular second_color fa-trash-can"></i>
-                                        Delete
                                     </a>
                                 </li>
                             </ul>
@@ -136,5 +91,4 @@
 
     </div>
 </section>
-
-<app-delete-item [itemId]="selectedItemId" (confirmDelete)="deleteItem($event)"></app-delete-item>
+<app-recipe-details [itemId]="selectedItemId" (confirmAddFav)="addFavorite($event)"></app-recipe-details>

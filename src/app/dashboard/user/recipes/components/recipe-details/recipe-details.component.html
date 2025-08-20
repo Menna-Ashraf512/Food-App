@@ -1,0 +1,35 @@
+<div class="modal fade" id="AddFav" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="AddFavLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4  shadow-sm">
+
+            <!-- close btn -->
+            <div class="d-flex justify-content-end p-2">
+                <button type="button" class="btn border-0" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark fs-4 text-danger"></i>
+                </button>
+            </div>
+
+            <!-- body -->
+            <div class="modal-body text-center border-bottom">
+                <img [src]="imgRecipe" class="img_recipe shadow-lg mb-3" [alt]="recipeData?.name" />
+
+                <h5 class="fw-bold">{{recipeData?.name}}</h5>
+                <p class="text-muted mb-1">{{recipeData?.description}}</p>
+                <div class="d-flex justify-content-between">
+                    <p><span class="badge rounded-pill bg-success px-3">{{recipeData?.tag?.name}}</span></p>
+                    <p class="mb-1">
+                        <strong>Price:</strong> {{ recipeData?.price| currency:'$ ':'symbol':'1.0-0' }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- footer -->
+            <div class="modal-footer border-0 d-flex justify-content-end">
+                <button class="btn btn-outline-success px-4" (click)="onConfirm()">
+                    <i class="fa-regular fa-heart me-2"></i> Favorite
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

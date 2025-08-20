@@ -22,13 +22,14 @@
                 <div class="row">
                     <div class="col-md-8 title ">
                         <div class="header">
-                            <h3>Fill the <span>Recipes</span> !</h3>
+                            <h3>{{isAdmin?'Fill':'Show'}} the <span>Recipes</span> !</h3>
                         </div>
                         <p>you can now fill the meals easily using the table and form ,<br> click here and sill it with
                             the table !</p>
                     </div>
                     <div class="col-md-4 img_welcome  text-center">
-                        <button routerLink="/dashboard/admin/recipes" class="btn_green">Fill Recipes <i
+                        <button [routerLink]="isAdmin?'/dashboard/admin/recipes':'/dashboard/user/recipes'"
+                            class="btn_green px-5">{{isAdmin?'Fill':''}} Recipes <i
                                 class="fa-solid fa-arrow-right fs-6"></i></button>
 
                     </div>

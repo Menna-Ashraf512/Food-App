@@ -45,7 +45,7 @@ export class SideBarComponent {
     },
     {
       title: 'Recipes',
-      icon: 'fa-border-all',
+      icon: 'fa-utensils',
       menuLink: '/dashboard/admin/recipes',
       isActive: this.isAdmin(),
     },
@@ -56,9 +56,15 @@ export class SideBarComponent {
       isActive: this.isAdmin(),
     },
     {
+      title: 'Recipes',
+      icon: 'fa-utensils',
+      menuLink: '/dashboard/user/recipes',
+      isActive: this.isUser(),
+    },
+    {
       title: 'Favorites',
       icon: 'fa-heart',
-      menuLink: '/dashboard/home',
+      menuLink: '/dashboard/user/favorites',
       isActive: this.isUser(),
     },
   ];

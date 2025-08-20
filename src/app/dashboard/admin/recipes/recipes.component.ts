@@ -35,24 +35,28 @@ export class RecipesComponent implements OnInit {
     this.getTags();
   }
   getAllRecipes() {
-    this.recipesService
-      .getAllRecipes(this.pageSize, this.pageNumber, this.name)
-      .subscribe({
-        next: (res) => {
-          this.recipeData = res;
-          this.allRecipe = res.data.map((recipe: any) => {
-            return {
-              ...recipe,
-              imagePath: recipe.imagePath
-                ? this.baseUrl + recipe.imagePath
-                : 'assets/images/img-recipe.jpg',
-            };
-          });
-          this.listRecipe = [...this.allRecipe];
-        },
-      });
+    let recipeParam = {
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber,
+      name: this.name,
+      categoryId: this.selectedCat,
+      tagId: this.selectedTag,
+    };
+    this.recipesService.getAllRecipes(recipeParam).subscribe({
+      next: (res) => {
+        this.recipeData = res;
+        this.allRecipe = res.data.map((recipe: any) => {
+          return {
+            ...recipe,
+            imagePath: recipe.imagePath
+              ? this.baseUrl + recipe.imagePath
+              : 'assets/images/img-recipe.jpg',
+          };
+        });
+        this.listRecipe = [...this.allRecipe];
+      },
+    });
   }
-
   deleteItem(id: any) {
     this.recipesService.deleteRecipe(id).subscribe({
       next: () => {
@@ -118,20 +122,6 @@ export class RecipesComponent implements OnInit {
       next: (res) => {
         this.categoryList = res.data;
       },
-    });
-  }
-
-  applyFilter() {
-    this.listRecipe = this.allRecipe.filter((recipe) => {
-      const matchTag = this.selectedTag
-        ? recipe.tag?.id === Number(this.selectedTag)
-        : true;
-
-      const matchCat = this.selectedCat
-        ? recipe.category.some((cat) => cat.id === Number(this.selectedCat))
-        : true;
-
-      return matchTag && matchCat;
     });
   }
 

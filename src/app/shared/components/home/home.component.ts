@@ -13,6 +13,8 @@ export class HomeComponent {
     this.getImage();
   }
 
+  isAdmin = localStorage.getItem('role') === 'SuperAdmin' ? true : false;
+
   getImage() {
     this.authService.getProfileData().subscribe({
       next: (res) => {

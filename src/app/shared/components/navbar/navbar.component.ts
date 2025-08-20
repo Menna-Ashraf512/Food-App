@@ -23,6 +23,9 @@ export class NavbarComponent implements OnInit {
         this.imgProfile = this.baseUrl + res.imagePath;
         this.userName = res.userName;
       },
+      error: (err) => {
+        console.error('API Error:', err);
+      },
     });
   }
 
