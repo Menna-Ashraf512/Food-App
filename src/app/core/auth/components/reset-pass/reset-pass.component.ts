@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../service/auth.service';
 import {
   AbstractControl,
   FormControl,

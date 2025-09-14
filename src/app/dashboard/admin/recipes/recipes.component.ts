@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipesService } from './service/recipes.service';
-import { IRecipe, RecipeData, Tag } from './interfaces/recipe';
+import { RecipesService } from '../services/recipes.service';
+import { IRecipe, RecipeData, Tag } from '../interfaces/recipe';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { CategoryService } from '../category/service/category.service';
-import { ICategoryData } from '../category/interfaces/category';
+import { CategoryService } from '../services/category.service';
+import { ICategoryData } from '../interfaces/category';
 import { environment } from 'src/app/core/environment/baseUrlImage';
 
 @Component({
@@ -57,6 +57,7 @@ export class RecipesComponent implements OnInit {
       },
     });
   }
+
   deleteItem(id: any) {
     this.recipesService.deleteRecipe(id).subscribe({
       next: () => {

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { UsersService } from '../../service/users.service';
-import { userData } from '../../interface/users';
+import { UsersService } from '../../../services/users.service';
+import { userData } from '../../../interfaces/users';
 import { environment } from 'src/app/core/environment/baseUrlImage';
 
 @Component({

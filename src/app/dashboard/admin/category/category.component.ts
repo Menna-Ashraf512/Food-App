@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from './service/category.service';
-import { ICategory, ICategoryData } from './interfaces/category';
+import { CategoryService } from '../services/category.service';
+import { ICategory, ICategoryData } from '../interfaces/category';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -89,7 +90,6 @@ export class CategoryComponent implements OnInit {
   }
 
   // modal
-
   closeModal() {
     const modalEl = document.getElementById('deleteItem');
     if (!modalEl) return;

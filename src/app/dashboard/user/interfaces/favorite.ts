@@ -1,4 +1,4 @@
-import { RecipeData } from 'src/app/dashboard/admin/recipes/interfaces/recipe';
+import { RecipeData } from 'src/app/dashboard/admin/interfaces/recipe';
 
 export interface IFavorite {
   pageNumber: number;

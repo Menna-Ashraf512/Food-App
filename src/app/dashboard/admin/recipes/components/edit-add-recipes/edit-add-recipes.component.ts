@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { RecipesService } from '../../service/recipes.service';
-import { RecipeData, Tag } from '../../interfaces/recipe';
-import { CategoryService } from '../../../category/service/category.service';
-import {
-  ICategory,
-  ICategoryData,
-} from '../../../category/interfaces/category';
+import { RecipesService } from '../../../services/recipes.service';
+import { RecipeData, Tag } from '../../../interfaces/recipe';
+import { CategoryService } from '../../../services/category.service';
+import { ICategory, ICategoryData } from '../../../interfaces/category';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/app/core/environment/baseUrlImage';
@@ -26,12 +23,13 @@ export class EditAddRecipesComponent implements OnInit {
   recipeData!: RecipeData;
   baseUrl = environment.baseUrl;
   mode = this.activatedRoute.snapshot.url.some((x) => x.path === 'view');
+
   recipeForm = new FormGroup({
-    name: new FormControl<string | null>(null, Validators.required),
-    description: new FormControl<string | null>(null, Validators.required),
-    price: new FormControl<number | null>(null, Validators.required),
-    tagId: new FormControl<number | null>(null, Validators.required),
-    categoriesIds: new FormControl<number[] | null>(null, Validators.required),
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    price: new FormControl(0, Validators.required),
+    tagId: new FormControl(0, Validators.required),
+    categoriesIds: new FormControl([0], Validators.required),
   });
 
   constructor(
@@ -53,7 +51,6 @@ export class EditAddRecipesComponent implements OnInit {
     this.getTags();
     this.getAllCategory();
   }
-  // -----------------------------------------------------------------------//
 
   urlToFile(url: string, filename: string): Promise<File> {
     return fetch(this.baseUrl + url)
@@ -83,11 +80,11 @@ export class EditAddRecipesComponent implements OnInit {
   }
 
   submitRecipe(formData: FormData) {
-    const request$ = this.recipeId
+    const request = this.recipeId
       ? this.recipesService.updateRecipe(formData, this.recipeId)
       : this.recipesService.addRecipe(formData);
 
-    request$.subscribe({
+    request.subscribe({
       next: (res) => {
         console.log(res);
         Swal.fire({
@@ -167,7 +164,6 @@ export class EditAddRecipesComponent implements OnInit {
     if (selectedFile) {
       this.files = [selectedFile];
       this.selectedFile = selectedFile;
-      this.srcImg = URL.createObjectURL(selectedFile);
     }
   }
 

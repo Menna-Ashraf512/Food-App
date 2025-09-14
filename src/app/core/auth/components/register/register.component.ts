@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -58,7 +58,6 @@ export class RegisterComponent {
     this.isLoading = true;
     let myData = new FormData();
     let formValues: any = this.registerForm.getRawValue();
-
     for (let key in formValues) {
       myData.append(key, String(formValues[key]));
     }
@@ -76,7 +75,6 @@ export class RegisterComponent {
       },
       error: (err) => {
         this.isLoading = false;
-
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -124,7 +122,6 @@ export class RegisterComponent {
   confirmPassword(group: AbstractControl) {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
-
     return password === confirmPassword ? null : { mismatch: true };
   }
   // -----------------------------------------------------------------------//

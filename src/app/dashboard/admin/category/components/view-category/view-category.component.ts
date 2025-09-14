@@ -1,11 +1,11 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from 'src/app/dashboard/admin/category/service/category.service';
+import { CategoryService } from 'src/app/dashboard/admin/services/category.service';
 
 @Component({
   selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss'],
+  templateUrl: './view-category.component.html',
+  styleUrls: ['./view-category.component.scss'],
 })
 export class ViewComponent {
   constructor(private categoryService: CategoryService) {}

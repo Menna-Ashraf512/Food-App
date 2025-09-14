@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
-import { NotFoundComponent } from '../core/not-found/not-found.component';
+import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
 import { HomeComponent } from '../shared/components/home/home.component';
 import { adminGuard } from '../core/guards/admin.guard';
 import { userGuard } from '../core/guards/user.guard';

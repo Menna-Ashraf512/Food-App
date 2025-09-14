@@ -6,7 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { environment } from 'src/app/core/environment/baseUrlImage';
-import { RecipeData } from 'src/app/dashboard/admin/recipes/interfaces/recipe';
+import { RecipeData } from 'src/app/dashboard/admin/interfaces/recipe';
 import { RecipeUserService } from '../../../service/recipe-user.service';
 
 @Component({

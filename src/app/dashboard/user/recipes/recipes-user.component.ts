@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  IRecipe,
-  RecipeData,
-  Tag,
-} from '../../admin/recipes/interfaces/recipe';
+import { IRecipe, RecipeData, Tag } from '../../admin/interfaces/recipe';
 import { environment } from 'src/app/core/environment/baseUrlImage';
-import { ICategoryData } from '../../admin/category/interfaces/category';
+import { ICategoryData } from '../../admin/interfaces/category';
 import { RecipeUserService } from '../service/recipe-user.service';
-import { CategoryService } from '../../admin/category/service/category.service';
-import { FavoriteData } from '../favorites/interfaces/favorite';
+import { CategoryService } from '../../admin/services/category.service';
+import { FavoriteData } from '../interfaces/favorite';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
@@ -29,7 +25,7 @@ export class RecipesComponent {
   selectedCat = '';
   tagsList: Tag[] = [];
   categoryList: ICategoryData[] = [];
-  isFavorite: boolean = false;
+  favoriteIds: number[] = [];
   constructor(
     private recipeUserService: RecipeUserService,
     private categoryService: CategoryService
@@ -38,10 +34,6 @@ export class RecipesComponent {
     this.getAllRecipes();
     this.getAllCategory();
     this.getTags();
-    this.recipeUserService.getAllFavorite().subscribe((res) => {
-      const favoritesIds = res.data.map((fav: any) => fav.recipe?.id);
-      this.isFavorite = favoritesIds.includes(this.selectedItemId);
-    });
   }
   getAllRecipes() {
     let recipeParam = {
@@ -63,6 +55,9 @@ export class RecipesComponent {
           };
         });
         this.listRecipe = [...this.allRecipe];
+        this.recipeUserService.getAllFavorite().subscribe((res) => {
+          this.favoriteIds = res.data.map((fav: any) => fav.recipe?.id);
+        });
       },
     });
   }
@@ -92,31 +87,7 @@ export class RecipesComponent {
   }
 
   addFavorite(id: number) {
-    if (!this.isFavorite) {
-      this.recipeUserService.addFavorite(id).subscribe({
-        next: (res) => {
-          this.isFavorite = true;
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            },
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Add Favorite successfully',
-          });
-        },
-        complete: () => {
-          this.closeModal();
-        },
-      });
-    } else {
+    if (this.favoriteIds.includes(id)) {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -132,7 +103,31 @@ export class RecipesComponent {
         icon: 'warning',
         title: 'Already Added to Favorites ',
       });
+      return;
     }
+    this.recipeUserService.addFavorite(id).subscribe({
+      next: (res) => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Add Favorite successfully',
+        });
+      },
+      complete: () => {
+        this.closeModal();
+        this.getAllRecipes();
+      },
+    });
   }
   //---------------- modal--------------//
 

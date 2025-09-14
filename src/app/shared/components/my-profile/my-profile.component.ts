@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/app/core/environment/baseUrlImage';
-import { CurrentProfileService } from 'src/app/core/service/current-profile.service';
-import { userData } from 'src/app/dashboard/admin/users/interface/users';
+import { CurrentProfileService } from 'src/app/shared/services/current-profile.service';
+import { userData } from 'src/app/dashboard/admin/interfaces/users';
 import Swal from 'sweetalert2';
 
 @Component({

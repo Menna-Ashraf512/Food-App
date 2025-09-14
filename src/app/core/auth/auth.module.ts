@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 import { VerifyPassComponent } from './components/verify-pass/verify-pass.component';
-import { NotFoundComponent } from '../not-found/not-found.component';
+import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { ChangePassComponent } from '../../shared/components/change-pass/change-pass.component';

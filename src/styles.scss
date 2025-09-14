@@ -39,6 +39,10 @@ body {
   height: 100%;
 }
 
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
 :root {
   --primary-color: rgb(31, 38, 62);
   --secondary-color: rgb(74, 163, 90);

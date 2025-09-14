@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeUserService } from '../service/recipe-user.service';
-import { FavoriteData, IFavorite } from './interfaces/favorite';
+import { FavoriteData, IFavorite } from '../interfaces/favorite';
 import { environment } from 'src/app/core/environment/baseUrlImage';
-import { Tag } from '../../admin/recipes/interfaces/recipe';
-import { ICategoryData } from '../../admin/category/interfaces/category';
+import { Tag } from '../../admin/interfaces/recipe';
+import { ICategoryData } from '../../admin/interfaces/category';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
@@ -15,8 +15,9 @@ export class FavoritesComponent implements OnInit {
   favData!: IFavorite;
   favList: FavoriteData[] = [];
   allFav!: FavoriteData[];
-  pageSize!: number;
-  pageNumber!: number;
+  pageSize: number = 10;
+  pageNumber: number = 1;
+  isTable = true;
   baseUrl = environment.baseUrl;
   selectedItemId!: number;
   name: string = '';
@@ -35,8 +36,8 @@ export class FavoritesComponent implements OnInit {
   getAllFavorite() {
     this.recipeUserService.getAllFavorite().subscribe({
       next: (res) => {
-        this.favList = res.data;
         this.allFav = res.data;
+        this.favList = res.data;
         this.favData = res;
       },
     });
@@ -45,6 +46,7 @@ export class FavoritesComponent implements OnInit {
   openDeleteModal(id: number) {
     this.selectedItemId = id;
   }
+
   getTags() {
     this.recipeUserService.getAllTag().subscribe({
       next: (res) => {
@@ -79,17 +81,6 @@ export class FavoritesComponent implements OnInit {
         : true;
 
       return matchTag && matchCat;
-    });
-  }
-
-  addFavorite(id: number) {
-    this.recipeUserService.addFavorite(id).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      complete: () => {
-        this.closeModal();
-      },
     });
   }
 

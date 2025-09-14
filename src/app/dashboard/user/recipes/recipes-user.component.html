@@ -1,94 +1,101 @@
 <section>
-    <div class="container-fluid">
-        <div class="my-3">
-            <div class="d-flex flex-column flex-lg-row justify-content-center gap-2 align-items-center mb-2  mx-auto">
-                <div class="d-flex gap-2">
-                    <mat-form-field class="tag">
-                        <mat-label>Tag</mat-label>
-                        <mat-select [(value)]="selectedTag" (selectionChange)="getAllRecipes()">
-                            <mat-option [value]="''">All</mat-option>
-                            <mat-option *ngFor="let tag of tagsList" value={{tag.id}}>{{tag.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="cat">
-                        <mat-label>Category</mat-label>
-                        <mat-select [(value)]="selectedCat" (selectionChange)="getAllRecipes()">
-                            <mat-option [value]="''">All</mat-option>
-                            <mat-option *ngFor="let cat of categoryList" value={{cat.id}}>{{cat.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="input_search">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input [(ngModel)]="name" (keydown.enter)="getAllRecipes()" type="text" class="form-control"
-                        placeholder="Search By Name....">
-                </div>
-
-            </div>
-            <table class="table table-responsive">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Tag</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody *ngIf="listRecipe.length > 0; else noData">
-                    <tr *ngFor="let item of listRecipe">
-                        <td>{{item.name}}</td>
-                        <td>
-                            <img class="recipe_img" [src]="item.imagePath" [alt]="item.name">
-                        </td>
-                        <td>{{item.price}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.tag.name}}</td>
-                        <td>
-                            <ng-container *ngFor="let cat of item.category; let last = last">
-                                {{ cat.name }}<span *ngIf="!last">, </span>
-                            </ng-container>
-                        </td>
-                        <td>
-                            <button class="btn border-0" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="fa-solid fa-ellipsis"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal"
-                                        data-bs-target="#AddFav" class="dropdown-item d-flex  align-items-center gap-2">
-                                        <i class="fa-regular second_color fa-eye"></i>
-                                        View
-                                    </a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+  <div class="container-fluid">
+    <div class="my-3">
+      <div class="d-flex flex-column flex-lg-row justify-content-center gap-2 align-items-center mb-2  mx-auto">
+        <div class="d-flex flex-column flex-md-row gap-2">
+          <mat-form-field class="tag">
+            <mat-label>Tag</mat-label>
+            <mat-select [(value)]="selectedTag" (selectionChange)="getAllRecipes()">
+              <mat-option [value]="''">All</mat-option>
+              <mat-option *ngFor="let tag of tagsList" value={{tag.id}}>{{tag.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="cat">
+            <mat-label>Category</mat-label>
+            <mat-select [(value)]="selectedCat" (selectionChange)="getAllRecipes()">
+              <mat-option [value]="''">All</mat-option>
+              <mat-option *ngFor="let cat of categoryList" value={{cat.id}}>{{cat.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <ng-template #noData>
-            <tr>
-                <td colspan="7">
-                    <div class="text-center mt-5">
-                        <img src="../../../../assets/images/vector-puppis.png" alt="No Data">
-                        <div class="py-3">
-                            <h5 class="m-0 p-0">No Data !</h5>
-                            <p class="text-muted">are you sure you want to delete this item ? if you are sure just<br>
-                                click on delete it</p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </ng-template>
-        <div class="mb-4" *ngIf="listRecipe.length>0">
-            <mat-paginator [length]="recipeData.totalNumberOfRecords" [pageSizeOptions]="[5, 10, 30]"
-                aria-label="Select page" (page)="handlePageEvent($event)">
-            </mat-paginator>
+        <div class="input_search">
+          <span><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input [(ngModel)]="name" (keydown.enter)="getAllRecipes()" type="text" class="form-control"
+            placeholder="Search By Name....">
         </div>
-
+      </div>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Tag</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="listRecipe.length > 0; else noData">
+          <tr *ngFor="let item of listRecipe">
+            <td>{{item.name}}</td>
+            <td>
+              <img aria-label="recipe image" class="recipe_img" [src]="item.imagePath" [alt]="item.name">
+            </td>
+            <td>{{item.price}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.tag.name}}</td>
+            <td>
+              <ng-container *ngFor="let cat of item.category; let last = last">
+                {{ cat.name }}<span *ngIf="!last">, </span>
+              </ng-container>
+            </td>
+            <td>
+              <button aria-label="More options" class="btn border-0" data-bs-toggle="dropdown" aria-expanded="false"><i
+                  class="fa-solid fa-ellipsis"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a (click)="openDeleteModal(item.id)" data-bs-toggle="modal" data-bs-target="#AddFav"
+                    class="dropdown-item d-flex cursor-pointer align-items-center gap-2">
+                    <i class="fa-regular second_color fa-eye"></i>
+                    View
+                  </a>
+                </li>
+                <li>
+                  <a (click)="addFavorite(item.id)"
+                    class="dropdown-item d-flex  cursor-pointer align-items-center gap-2">
+                    <i class="fa-regular second_color  fa-heart"
+                      [ngClass]="{'text-muted': favoriteIds.includes(item.id)}"></i>
+                    {{ favoriteIds.includes(item.id) ? 'Added' : 'Add Favorite' }}
+                  </a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <ng-template #noData>
+      <tr>
+        <td colspan="7">
+          <div class="text-center mt-5">
+            <img src="../../../../assets/images/vector-puppis.png" alt="No Data">
+            <div class="py-3">
+              <h5 class="m-0 p-0">No Data !</h5>
+              <p class="text-muted">are you sure you want to delete this item ? if you are sure just<br>
+                click on delete it</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <div class="mb-4" *ngIf="listRecipe.length>0">
+      <mat-paginator [length]="recipeData.totalNumberOfRecords" [pageSizeOptions]="[5, 10, 30]" aria-label="Select page"
+        (page)="handlePageEvent($event)">
+      </mat-paginator>
+    </div>
+
+  </div>
 </section>
 <app-recipe-details [itemId]="selectedItemId" (confirmAddFav)="addFavorite($event)"></app-recipe-details>

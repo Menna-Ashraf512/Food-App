@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { AuthService } from '../../../core/auth/services/auth.service';
+import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
   selector: 'app-change-pass',

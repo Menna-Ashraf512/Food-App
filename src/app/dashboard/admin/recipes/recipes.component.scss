@@ -1,7 +1,6 @@
 section {
     min-height: 140vh;
 
-
     .content_welcome {
         background-image: url(../../../../assets/images/bg-homePage.png);
         background-repeat: no-repeat;
@@ -82,6 +81,7 @@ section {
         width: 100%;
         box-sizing: border-box;
         position: relative;
+        margin-bottom: 10px;
 
         input {
             width: 100%;
@@ -130,13 +130,13 @@ section {
     }
 
     table {
+        width: 100%;
 
         thead {
             tr {
                 th {
                     background: #E2E5EB;
                     color: var(--primary-color);
-                    padding-block: 20px;
                     text-align: center;
                     border: none;
                 }
@@ -157,7 +157,6 @@ section {
             tr {
                 td {
                     text-align: center;
-                    padding-block: 20px;
 
                     .recipe_img {
                         max-width: 50px;

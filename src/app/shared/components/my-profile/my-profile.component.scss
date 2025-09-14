@@ -1,62 +1,62 @@
 .profile-section {
-    background: #f9fafb;
+  background: #f9fafb;
 
-    .card {
-        background: #fff;
+  .card {
+    background: #fff;
 
-        .role-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .admin {
-            background-color: var(--secondary-color);
-        }
-
-        .user {
-            background-color: var(--primary-color);
-        }
-
-
-        .profile-image-wrapper {
-            position: relative;
-            width: 140px;
-            height: 140px;
-
-            .profile-img {
-                width: 140px;
-                height: 140px;
-                object-fit: cover;
-            }
-        }
-
-        .delete-btn {
-            position: absolute;
-            top: 0;
-            right: 0;
-            border-radius: 50%;
-        }
-
-        .upload-btn {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: var(--secondary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-
-            ngx-dropzone-label {
-                margin: 0;
-                font-size: 18px;
-            }
-        }
+    .role-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #fff;
     }
+
+    .admin {
+      background-color: var(--secondary-color);
+    }
+
+    .user {
+      background-color: var(--primary-color);
+    }
+
+
+    .profile-image-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+
+      .profile-img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+      }
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+    }
+
+    .upload-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      ngx-dropzone-label {
+        margin: 0;
+        font-size: 18px;
+      }
+    }
+  }
 }

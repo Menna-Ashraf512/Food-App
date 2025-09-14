@@ -6,7 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { CategoryService } from '../../service/category.service';
+import { CategoryService } from '../../../services/category.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
@@ -106,6 +106,7 @@ export class EditAddCategoryComponent implements OnChanges {
     const modal = (window as any).bootstrap.Modal.getOrCreateInstance(modalEl);
     modal.hide();
   }
+
   enhanceData() {
     this.addItemForm.reset();
     this.itemId = 0;

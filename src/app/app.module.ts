@@ -6,7 +6,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GlobalInterceptor } from './core/interceptor/global.interceptor';
 import { SharedModule } from './shared/shared.module';
-import { NotFoundComponent } from './core/not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './core/interceptor/loading.interceptor';

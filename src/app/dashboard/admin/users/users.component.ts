@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { environment } from 'src/app/core/environment/baseUrlImage';
-import { UsersService } from './service/users.service';
-import { userData, Users } from './interface/users';
+import { UsersService } from '../services/users.service';
+import { userData, Users } from '../interfaces/users';
 
 @Component({
   selector: 'app-users',
