@@ -22,7 +22,7 @@ export class EditAddCategoryComponent implements OnChanges {
   @Output() confirmEdit = new EventEmitter<number>();
 
   addItemForm = new FormGroup({
-    name: new FormControl(null, Validators.required),
+    name: new FormControl<string | null>(null, Validators.required),
   });
 
   ngOnChanges(changes: SimpleChanges) {
@@ -48,6 +48,13 @@ export class EditAddCategoryComponent implements OnChanges {
 
   saveItem() {
     if (this.addItemForm.invalid) return;
+
+    const nameValue = this.addItemForm.get('name')?.value;
+    if (nameValue) {
+      this.addItemForm.patchValue({
+        name: nameValue.toLowerCase(),
+      });
+    }
 
     if (this.itemId) {
       this.updateItem();
