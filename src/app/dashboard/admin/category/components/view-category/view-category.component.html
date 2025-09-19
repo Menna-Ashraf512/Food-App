@@ -1,36 +1,46 @@
 <div class="modal fade" id="viewItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="viewItemLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-4 rounded-4 shadow-lg border-0">
-            <div class="d-flex  justify-content-between">
-                <h2>Details</h2>
-                <button type="button" class="btn btn_close ms-auto" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="fa-solid fa-xmark text-danger"></i></button>
-            </div>
-            <div>
-                <form [formGroup]="ViewItem" class="d-flex flex-column mt-3 gap-4">
-                    <div>
-                        <label for="id">Id</label>
-                        <input formControlName="id" type="text" class="form-control" placeholder="Category Name ">
-                    </div>
-                    <div>
-                        <label for="name">Name</label>
-                        <input formControlName="name" type="text" class="form-control" placeholder="Category Name ">
-                    </div>
-                    <div>
-                        <label for="modificationDate">Modification Date</label>
-                        <input [value]="ViewItem.get('modificationDate')?.value | date:'dd/MM/yyyy HH:mm'"
-                            formControlName="modificationDate" type="text" class="form-control"
-                            placeholder="Category Name ">
-                    </div>
-                    <div>
-                        <label class="form-label" for="creationDate">Creation Date</label>
-                        <input [value]="ViewItem.get('creationDate')?.value | date:'dd/MM/yyyy HH:mm'"
-                            formControlName="creationDate" type="text" class="form-control"
-                            placeholder="Category Name ">
-                    </div>
-                </form>
-            </div>
+  aria-labelledby="viewItemLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content p-4 rounded-4 shadow-lg border-0">
+
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+        <h2 class="h4 m-0">Details</h2>
+        <button type="button" class="btn btn_close ms-auto" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark text-danger fs-4"></i>
+        </button>
+      </div>
+
+      <!-- Details List -->
+      <div class="d-flex flex-column gap-3">
+        <!-- Name -->
+        <div class="d-flex align-items-center p-3 rounded shadow-sm bg-light">
+          <i class="fa-solid fa-tag text-success fs-4 me-3"></i>
+          <div>
+            <p class="mb-1 fw-bold text-muted">Name</p>
+            <p class="mb-0 fs-6">{{ ViewItem.get('name')?.value }}</p>
+          </div>
         </div>
+
+        <!-- Modification Date -->
+        <div class="d-flex align-items-center p-3 rounded shadow-sm bg-light">
+          <i class="fa-solid fa-pen-to-square text-warning fs-4 me-3"></i>
+          <div>
+            <p class="mb-1 fw-bold text-muted">Modification Date</p>
+            <p class="mb-0 fs-6">{{ ViewItem.get('modificationDate')?.value | date:'dd/MM/yyyy HH:mm' }}</p>
+          </div>
+        </div>
+
+        <!-- Creation Date -->
+        <div class="d-flex align-items-center p-3 rounded shadow-sm bg-light">
+          <i class="fa-solid fa-calendar-plus text-danger fs-4 me-3"></i>
+          <div>
+            <p class="mb-1 fw-bold text-muted">Creation Date</p>
+            <p class="mb-0 fs-6">{{ ViewItem.get('creationDate')?.value | date:'dd/MM/yyyy HH:mm' }}</p>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 </div>
