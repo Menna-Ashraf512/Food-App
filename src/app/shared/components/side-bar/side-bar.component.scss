@@ -1,55 +1,55 @@
     .sidebar {
-        display: flex;
-        flex-direction: column;
-        transition: width 0.5s ease;
-        border-top-right-radius: 3.625rem;
-        height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: width 0.5s ease;
+      border-top-right-radius: 3.625rem;
+      height: 100%;
 
-        ul {
-            li {
-                padding-block: 5px;
-                justify-content: center;
-                position: relative;
-                cursor: pointer;
+      ul {
+        li {
+          padding-block: 5px;
+          justify-content: center;
+          position: relative;
+          cursor: pointer;
 
-                a {
-                    text-decoration: none;
-                    color: #fff;
-                }
+          a {
+            text-decoration: none;
+            color: #fff;
+          }
 
-                &.active {
-                    background: #00924D1A;
+          &.active {
+            background: #00924D1A;
 
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        background-color: #009247;
-                        width: 3px;
-                        top: 0;
-                        bottom: 0;
-                    }
-                }
+            &::before {
+              content: "";
+              position: absolute;
+              background-color: #009247;
+              width: 3px;
+              top: 0;
+              bottom: 0;
             }
+          }
+        }
+      }
+
+
+      &.sidebar-close {
+        width: 102px;
+        align-items: center;
+
+        .sidebar-logo {
+          height: 140px;
+        }
+
+      }
+
+      &.sidebar-open {
+        width: 243px;
+
+        .sidebar-logo {
+          height: 140px;
         }
 
 
-        &.sidebar-close {
-            width: 102px;
-            align-items: center;
-
-            .sidebar-logo {
-                height: 140px;
-            }
-
-        }
-
-        &.sidebar-open {
-            width: 243px;
-
-            .sidebar-logo {
-                height: 140px;
-            }
-
-
-        }
+      }
     }

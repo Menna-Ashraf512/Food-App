@@ -70,7 +70,6 @@ export class ResetPassComponent implements OnInit {
         });
       },
       error: (err) => {
-        console.log(err);
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',

@@ -24,7 +24,6 @@ export class AuthService {
     let encode: any = localStorage.getItem('userToken');
     let decoded: any = jwtDecode(encode);
     localStorage.setItem('role', decoded.userGroup);
-    console.log(decoded.userGroup);
   }
   getProfileData(): Observable<any> {
     return this.httpClient.get(`Users/currentUser`);

@@ -37,7 +37,6 @@ export class UsersComponent {
       next: (res) => {
         this.userData = res;
         this.userList = res.data;
-        console.log(this.userList);
       },
     });
   }

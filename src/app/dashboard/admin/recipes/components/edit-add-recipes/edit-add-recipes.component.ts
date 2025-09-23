@@ -86,7 +86,6 @@ export class EditAddRecipesComponent implements OnInit {
 
     request.subscribe({
       next: (res) => {
-        console.log(res);
         Swal.fire({
           icon: 'success',
           title: 'Update recipe successfully',
@@ -115,9 +114,6 @@ export class EditAddRecipesComponent implements OnInit {
       next: (res) => {
         this.recipeData = res;
       },
-      error(err) {
-        console.log(err);
-      },
       complete: () => {
         if (this.recipeData?.imagePath) {
           this.srcImg = this.baseUrl + this.recipeData.imagePath;
@@ -140,7 +136,6 @@ export class EditAddRecipesComponent implements OnInit {
     this.recipesService.getAllTag().subscribe({
       next: (res) => {
         this.tagsList = res;
-        console.log(res);
       },
     });
   }

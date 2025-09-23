@@ -14,13 +14,17 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
   ngOnInit(): void {
-    this.getImage();
+    if (localStorage.getItem('userToken')) {
+      this.getImage();
+    }
   }
 
   getImage() {
     this.authService.getProfileData().subscribe({
       next: (res) => {
-        this.imgProfile = this.baseUrl + res.imagePath;
+        this.imgProfile = res.imagePath
+          ? this.baseUrl + res.imagePath
+          : '../../../../../../assets/images/img-profile.jpg';
         this.userName = res.userName;
       },
       error: (err) => {

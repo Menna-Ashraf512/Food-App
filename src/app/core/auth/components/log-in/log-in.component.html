@@ -1,67 +1,63 @@
 <section class="auth">
-    <div class="container ">
-        <div class="row min-vh-100 justify-content-center align-items-center">
-            <div class="auth_component d-flex flex-column row-gap-2">
-                <div class="logo text-center">
-                    <img src="../../../assets/images/logo.png" alt="logo">
-                </div>
-                <div class="header_auth">
-                    <h1>Log In</h1>
-                    <p>Welcome Back! Please enter your details</p>
-                </div>
-                <div class="form-content">
-                    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text left" id="email"><i class="fa-regular fa-envelope"></i></span>
-                            <input formControlName="email" type="text" class="form-control"
-                                placeholder="Enter your email" aria-label="email" aria-describedby="email">
-                        </div>
-                        <ng-container
-                            *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">
-                            <p class="alert alert-danger text-center" role="alert">
-                                Oops! email required!
-                            </p>
-
-                        </ng-container>
-
-                        <ng-container
-                            *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']">
-                            <p class="alert alert-warning text-center">
-                                Invalid email address
-                            </p>
-                        </ng-container>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text left"><i class="fa-solid fa-lock"></i></span>
-                            <input formControlName="password" [type]="isHide?'password':'text'" class="form-control"
-                                placeholder="Password" aria-label="password">
-                            <button type="button" (click)="isHide=!isHide" class="input-group-text"><i
-                                    class="fa-regular" [ngClass]="isHide?'fa-eye-slash':'fa-eye'"></i></button>
-                        </div>
-                        <ng-container
-                            *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">
-                            <p class="alert alert-danger text-center" role="alert">
-                                Oops! password required!
-                            </p>
-
-                        </ng-container>
-
-                        <ng-container
-                            *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['pattern']">
-                            <p class="alert alert-warning text-center" role="alert">
-                                Max 10 chars, must include uppercase, lowercase, number & special character.
-                            </p>
-                        </ng-container>
-
-                        <div class="links d-flex justify-content-between">
-                            <a routerLink="/auth/register" class="link">Register Now?</a>
-                            <a routerLink="/auth/forgetPass" class="link_green">Forgot Password?</a>
-                        </div>
-                        <div class="text-center my-4">
-                            <button [disabled]="loginForm.invalid" class="btn_green w-100">Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="container ">
+    <div class="row min-vh-100 justify-content-center align-items-center">
+      <div class="auth_component d-flex flex-column row-gap-2">
+        <div class="logo text-center">
+          <img src="../../../assets/images/logo.png" alt="logo">
         </div>
+        <div class="header_auth">
+          <h1>Log In</h1>
+          <p>Welcome Back! Please enter your details</p>
+        </div>
+        <div class="form-content">
+          <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+            <div class="input-group mb-3">
+              <span class="input-group-text left" id="email"><i class="fa-regular fa-envelope"></i></span>
+              <input formControlName="email" type="text" class="form-control" placeholder="Enter your email"
+                aria-label="email" aria-describedby="email">
+            </div>
+            <ng-container *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">
+              <p class="alert alert-danger text-center" role="alert">
+                Oops! email required!
+              </p>
+
+            </ng-container>
+
+            <ng-container *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']">
+              <p class="alert alert-warning text-center">
+                Invalid email address
+              </p>
+            </ng-container>
+            <div class="input-group mb-3">
+              <span class="input-group-text left"><i class="fa-solid fa-lock"></i></span>
+              <input formControlName="password" [type]="isHide?'password':'text'" class="form-control"
+                placeholder="Password" aria-label="password">
+              <button aria-label="icon" type="button" (click)="isHide=!isHide" class="input-group-text"><i
+                  class="fa-regular" [ngClass]="isHide?'fa-eye-slash':'fa-eye'"></i></button>
+            </div>
+            <ng-container *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">
+              <p class="alert alert-danger text-center" role="alert">
+                Oops! password required!
+              </p>
+
+            </ng-container>
+
+            <ng-container *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['pattern']">
+              <p class="alert alert-warning text-center" role="alert">
+                Max 10 chars, must include uppercase, lowercase, number & special character.
+              </p>
+            </ng-container>
+
+            <div class="links d-flex justify-content-between">
+              <a routerLink="/auth/register" class="link">Register Now?</a>
+              <a routerLink="/auth/forgetPass" class="link_green">Forgot Password?</a>
+            </div>
+            <div class="text-center my-4">
+              <button type="submit" [disabled]="loginForm.invalid" class="btn_green w-100">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

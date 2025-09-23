@@ -18,11 +18,6 @@ export class SideBarComponent {
   constructor(private router: Router) {}
 
   // --------------------------------------------------------//
-  // logout() {
-  //   localStorage.clear();
-  //   this.router.navigate(['/auth']);
-  // }
-
   isAdmin(): boolean {
     return localStorage.getItem('role') === 'SuperAdmin' ? true : false;
   }

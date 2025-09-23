@@ -14,9 +14,9 @@ export class MyProfileComponent implements OnInit {
   userData!: userData;
   isHide: boolean = false;
   srcImg: any;
-  previewImg: string = 'assets/img-profile.jpg';
+  previewImg!: string;
   files: File[] = [];
-  originalImg!: string;
+  originalImg: string = 'assets/images/img-profile.jpg';
   role!: any;
 
   basUrl = environment.baseUrl;
@@ -47,14 +47,15 @@ export class MyProfileComponent implements OnInit {
     this.currentProfileService.getCurrentUser().subscribe({
       next: (res) => {
         this.userData = res;
-
         this.role = this.userData.group.name;
         if (this.role === 'SuperAdmin') {
           this.role = 'Admin';
         } else {
           this.role = 'User';
         }
-        this.originalImg = this.basUrl + res.imagePath;
+        this.originalImg = res.imagePath
+          ? this.basUrl + res.imagePath
+          : 'assets/images/img-profile.jpg';
         this.previewImg = this.originalImg;
         this.profileForm.patchValue({
           userName: res.userName,

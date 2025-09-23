@@ -86,7 +86,7 @@ export class FavoritesComponent implements OnInit {
 
   deleteFavorite(id: number) {
     Swal.fire({
-      title: 'Delete this item?',
+      title: 'Delete this Recipe?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Delete',

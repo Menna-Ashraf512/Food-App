@@ -29,7 +29,6 @@ export class ViewComponent {
     this.ViewItem.disable();
     this.categoryService.getCategoryById(id).subscribe({
       next: (res) => {
-        console.log(res);
         this.ViewItem.patchValue({
           name: res.name,
           id: res.id,

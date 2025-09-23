@@ -34,9 +34,7 @@ export class LogInComponent implements OnInit {
   login(data: FormGroup) {
     this.authService.login(data.value).subscribe({
       next: (res) => {
-        console.log(res);
         localStorage.setItem('userToken', res.token);
-        this.authService.getProfile();
       },
       error: (err) => {
         const Toast = Swal.mixin({
@@ -56,6 +54,7 @@ export class LogInComponent implements OnInit {
         });
       },
       complete: () => {
+        this.authService.getProfile();
         this.router.navigate(['/dashboard']);
         const Toast = Swal.mixin({
           toast: true,

@@ -1,6 +1,6 @@
 <div class="modal fade" id="viewItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="viewItemLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-md">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content p-4 rounded-4 shadow-lg border-0">
 
       <!-- Header -->
@@ -15,31 +15,33 @@
       <div class="d-flex flex-column gap-3">
         <!-- Name -->
         <div class="d-flex align-items-center p-3 rounded shadow-sm bg-light">
-          <i class="fa-solid fa-tag text-success fs-4 me-3"></i>
+          <i class="fa-solid fa-tag  fs-4 me-3 second_color"></i>
           <div>
             <p class="mb-1 fw-bold text-muted">Name</p>
             <p class="mb-0 fs-6">{{ ViewItem.get('name')?.value }}</p>
           </div>
         </div>
 
-        <!-- Modification Date -->
-        <div class="d-flex align-items-center p-3 rounded shadow-sm bg-light">
-          <i class="fa-solid fa-pen-to-square text-warning fs-4 me-3"></i>
-          <div>
-            <p class="mb-1 fw-bold text-muted">Modification Date</p>
-            <p class="mb-0 fs-6">{{ ViewItem.get('modificationDate')?.value | date:'dd/MM/yyyy HH:mm' }}</p>
-          </div>
-        </div>
+
 
         <!-- Creation Date -->
         <div class="d-flex align-items-center p-3 rounded shadow-sm bg-light">
-          <i class="fa-solid fa-calendar-plus text-danger fs-4 me-3"></i>
+          <i class="fa-solid fa-calendar-plus fs-4 me-3 second_color"></i>
           <div>
             <p class="mb-1 fw-bold text-muted">Creation Date</p>
             <p class="mb-0 fs-6">{{ ViewItem.get('creationDate')?.value | date:'dd/MM/yyyy HH:mm' }}</p>
           </div>
         </div>
 
+
+        <!-- Modification Date -->
+        <div class="d-flex align-items-center p-3 rounded shadow-sm bg-light">
+          <i class="fa-solid fa-pen-to-square fs-4 me-3 second_color"></i>
+          <div>
+            <p class="mb-1 fw-bold text-muted">Modification Date</p>
+            <p class="mb-0 fs-6">{{ ViewItem.get('modificationDate')?.value | date:'dd/MM/yyyy HH:mm' }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

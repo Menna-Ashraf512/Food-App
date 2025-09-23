@@ -109,7 +109,6 @@ export class RecipesComponent implements OnInit {
     this.recipesService.getAllTag().subscribe({
       next: (res) => {
         this.tagsList = res;
-        console.log(res);
       },
     });
   }

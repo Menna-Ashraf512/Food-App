@@ -68,7 +68,6 @@ export class ChangePassComponent {
         });
       },
       error: (err) => {
-        console.log();
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
