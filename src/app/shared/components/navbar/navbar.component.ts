@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  imgProfile: string = '';
+  imgProfile: string | null = '';
   userName: string = '';
   baseUrl = 'https://upskilling-egypt.com:3006/';
 

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
 
@@ -10,7 +11,7 @@ export class AuthService {
   email: string = '';
   Img: any;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     if (localStorage.getItem('useToken') !== null) {
       this.getProfile();
     }
@@ -24,6 +25,7 @@ export class AuthService {
     let encode: any = localStorage.getItem('userToken');
     let decoded: any = jwtDecode(encode);
     localStorage.setItem('role', decoded.userGroup);
+    this.router.navigate(['/dashboard']);
   }
   getProfileData(): Observable<any> {
     return this.httpClient.get(`Users/currentUser`);

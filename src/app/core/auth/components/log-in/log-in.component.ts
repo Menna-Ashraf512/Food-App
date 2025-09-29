@@ -55,7 +55,6 @@ export class LogInComponent implements OnInit {
       },
       complete: () => {
         this.authService.getProfile();
-        this.router.navigate(['/dashboard']);
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
