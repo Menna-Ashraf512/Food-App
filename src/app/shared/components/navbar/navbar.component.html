@@ -9,7 +9,7 @@
     <div class="col-12 col-md-5">
       <div class="d-flex align-items-center justify-content-md-end justify-content-between gap-2 px-3 flex-wrap">
         <div class="img_Profile d-flex  align-items-center gap-2">
-          <img [src]="imgProfile" alt="imageProfile">
+          <img [src]="imgProfile | async" alt="imageProfile">
           <h4>{{userName}}</h4>
         </div>
         <div class="dropdown">

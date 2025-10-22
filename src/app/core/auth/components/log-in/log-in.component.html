@@ -10,6 +10,12 @@
           <p>Welcome Back! Please enter your details</p>
         </div>
         <div class="form-content">
+          <div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
+            <strong>Note:</strong> You can try the system using this admin test account:<br>
+            <b>Email:</b> mennaalla1512@gmail.com<br>
+            <b>Password:</b> test@Test2
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
           <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
             <div class="input-group mb-3">
               <span class="input-group-text left" id="email"><i class="fa-regular fa-envelope"></i></span>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { AuthService } from 'src/app/core/service/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  imgProfile: string | null = '';
+  imgProfile = new BehaviorSubject<string | null>(null);
   userName: string = '';
   baseUrl = 'https://upskilling-egypt.com:3006/';
 
   constructor(private authService: AuthService, private router: Router) {}
+
   ngOnInit(): void {
     if (localStorage.getItem('userToken')) {
       this.getImage();
@@ -22,9 +24,11 @@ export class NavbarComponent implements OnInit {
   getImage() {
     this.authService.getProfileData().subscribe({
       next: (res) => {
-        this.imgProfile = res.imagePath
+        const imagePath = res.imagePath
           ? this.baseUrl + res.imagePath
           : '../../../../../../assets/images/img-profile.jpg';
+
+        this.imgProfile.next(imagePath);
         this.userName = res.userName;
       },
       error: (err) => {
